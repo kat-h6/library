@@ -4,7 +4,7 @@ import User from '../models/User'
 import UserService from '../services/user'
 import { BadRequestError } from '../helpers/apiError'
 
-// POST /movies
+// POST /users
 export const createUser = async (
   req: Request,
   res: Response,
@@ -30,7 +30,7 @@ export const createUser = async (
   }
 }
 
-// PUT /movies/:movieId
+// PUT /users/userId
 export const updateUser = async (
   req: Request,
   res: Response,
@@ -38,9 +38,9 @@ export const updateUser = async (
 ) => {
   try {
     const update = req.body
-    const userId = req.params.movieId
-    const updatedMovie = await UserService.update(userId, update)
-    res.json(updatedMovie)
+    const userId = req.params.userId
+    const updatedUser = await UserService.update(userId, update)
+    res.json(updatedUser)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -50,7 +50,7 @@ export const updateUser = async (
   }
 }
 
-// DELETE /movies/:movieId
+// DELETE /users/:userId
 export const deleteUser = async (
   req: Request,
   res: Response,
@@ -68,7 +68,7 @@ export const deleteUser = async (
   }
 }
 
-// GET /movies/:movieId
+// GET /users/:userId
 export const findById = async (
   req: Request,
   res: Response,
@@ -85,7 +85,7 @@ export const findById = async (
   }
 }
 
-// GET /movies
+// GET /users
 export const findAll = async (
   req: Request,
   res: Response,
