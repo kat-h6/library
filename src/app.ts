@@ -1,11 +1,12 @@
 import express from 'express'
 import lusca from 'lusca'
 import dotenv from 'dotenv'
+import compression from 'compression'
 
 import bookRouter from './routers/book'
+import userRouter from './routers/user'
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import apiContentType from './middlewares/apiContentType'
-import compression from 'compression'
 
 dotenv.config({ path: '.env' })
 const app = express()
@@ -21,7 +22,7 @@ app.use(lusca.xssProtection(true))
 
 // Use movie router
 app.use('/api/v1/books', bookRouter)
-
+app.use('/api/v1/users', userRouter)
 // Custom API error handler
 app.use(apiErrorHandler)
 
