@@ -46,7 +46,27 @@ content-type: application/json
 
 ####
 
+GET http://localhost:3000/api/v1/users/618e74d0fad48c5a69c4c949
+
+####
+
 DELETE http://localhost:3000/api/v1/users/618d61250b8c182b14b1add4 HTTP/1.1
 
 
 ####
+POST http://localhost:3000/api/v1/bookings HTTP/1.1
+content-type: application/json
+
+{
+  "user": "618e74d0fad48c5a69c4c949",
+  "book": "618e74e0fad48c5a69c4c94b",
+  "startDate": "November 10, 2021 03:24:00",
+  "endDate": "December 1, 2021 03:24:00"
+}
+
+###
+GET http://localhost:3000/api/v1/bookings 
+
+###
+
+GET http://localhost:3000/api/v1/bookings/618e7642fad48c5a69c4c956 HTTP/1.1

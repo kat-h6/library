@@ -1,8 +1,35 @@
 import mongoose from 'mongoose'
 
 import User from '../models/User'
+import { MONGODB_URI } from '../util/secrets'
+import app from '../app'
 
-mongoose.connect('localhost:3000/api/v1/users')
+const mongoUrl = MONGODB_URI
+
+mongoose
+  .connect(mongoUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  })
+  .then(() => {
+    // Start Express server
+    app.listen(app.get('port'), () => {
+      console.log(
+        '  App is running at http://localhost:%d in %s mode',
+        app.get('port'),
+        app.get('env')
+      )
+      console.log('  Press CTRL-C to stop\n')
+    })
+  })
+  .catch((err) => {
+    console.log(
+      'MongoDB connection error. Please make sure MongoDB is running. ' + err
+    )
+    process.exit(1)
+  })
 
 const users = [
   new User({
