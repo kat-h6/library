@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 import User from '../models/User'
 
-mongoose.connect('localhost:3000/users')
+mongoose.connect('localhost:3000/api/v1/users')
 
 const users = [
   new User({
