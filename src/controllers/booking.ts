@@ -1,28 +1,27 @@
 import { Request, Response, NextFunction } from 'express'
 
-import User from '../models/User'
-import UserService from '../services/user'
+import Booking from '../models/Booking'
+import BookingService from '../services/booking'
 import { BadRequestError } from '../helpers/apiError'
 
-// POST /users
-export const createUser = async (
+// POST /book
+export const createBooking = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const { firstName, lastName, email, password, isAdmin } = req.body
+    const { startDate, endDate, user, book } = req.body
 
-    const user = new User({
-      firstName,
-      lastName,
-      email,
-      password,
-      isAdmin,
+    const booking = new Booking({
+      startDate,
+      endDate,
+      user,
+      book,
     })
 
-    await UserService.create(user)
-    res.json(user)
+    await BookingService.create(booking)
+    res.json(booking)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -32,17 +31,17 @@ export const createUser = async (
   }
 }
 
-// PUT /users/userId
-export const updateUser = async (
+// put movie
+export const updateBooking = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const update = req.body
-    const userId = req.params.userId
-    const updatedUser = await UserService.update(userId, update)
-    res.json(updatedUser)
+    const bookingId = req.params.bookingId
+    const updatedBooking = await BookingService.update(bookingId, update)
+    res.json(updatedBooking)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -52,14 +51,14 @@ export const updateUser = async (
   }
 }
 
-// DELETE /users/:userId
-export const deleteUser = async (
+// DELETE /movies/:movieId
+export const deleteBooking = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    await UserService.deleteUser(req.params.userId)
+    await BookingService.deleteBooking(req.params.bookingId)
     res.status(204).end()
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
@@ -70,14 +69,14 @@ export const deleteUser = async (
   }
 }
 
-// GET /users/:userId
+// GET /movies/:movieId
 export const findById = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await UserService.findById(req.params.userId))
+    res.json(await BookingService.findById(req.params.bookingId))
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -87,14 +86,14 @@ export const findById = async (
   }
 }
 
-// GET /users
+// GET /movies
 export const findAll = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await UserService.findAll())
+    res.json(await BookingService.findAll())
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))

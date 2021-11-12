@@ -39,6 +39,14 @@ content-type: application/json
 {
   "firstName": "Kathy",
   "lastName": "H",
-  "email": "kathy123@gmail.com"
+  "email": "kathy123@gmail.com",
+  "password": "kathy123",
+  "isAdmin": "true"
 }
 
+####
+
+DELETE http://localhost:3000/api/v1/users/618d61250b8c182b14b1add4 HTTP/1.1
+
+
+####

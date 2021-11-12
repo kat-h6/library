@@ -20,6 +20,7 @@ const bookSchema = new mongoose.Schema({
   authors: {
     type: [String],
     required: true,
+    index: true,
   },
   description: {
     type: String,

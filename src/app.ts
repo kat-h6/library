@@ -5,6 +5,7 @@ import compression from 'compression'
 
 import bookRouter from './routers/book'
 import userRouter from './routers/user'
+import bookingRouter from './routers/booking'
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import apiContentType from './middlewares/apiContentType'
 
@@ -23,6 +24,7 @@ app.use(lusca.xssProtection(true))
 // Use movie router
 app.use('/api/v1/books', bookRouter)
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/bookings', bookingRouter)
 // Custom API error handler
 app.use(apiErrorHandler)
 
