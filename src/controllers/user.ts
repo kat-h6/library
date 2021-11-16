@@ -11,7 +11,7 @@ export const createUser = async (
   next: NextFunction
 ) => {
   try {
-    const { firstName, lastName, email, password, isAdmin } = req.body
+    const { firstName, lastName, email, password, isAdmin, bookings } = req.body
 
     const user = new User({
       firstName,
@@ -19,6 +19,7 @@ export const createUser = async (
       email,
       password,
       isAdmin,
+      bookings,
     })
 
     await UserService.create(user)

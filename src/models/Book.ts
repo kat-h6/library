@@ -9,6 +9,7 @@ export type BookDocument = Document & {
   publishedYear: number
   genres: string[]
   isAvailable: boolean
+  imageUrl: string
 }
 
 const bookSchema = new mongoose.Schema({
@@ -22,23 +23,16 @@ const bookSchema = new mongoose.Schema({
     required: true,
     index: true,
   },
-  description: {
-    type: String,
-  },
-  ISBN: {
-    type: Number,
-  },
-  publisher: {
-    type: String,
-  },
-  publishedYear: {
-    type: Number,
-  },
+  description: { type: String },
+  ISBN: { type: Number },
+  publisher: { type: String },
+  publishedYear: { type: Number },
   genres: [String],
   isAvailable: {
     type: Boolean,
     default: true,
   },
+  imageUrl: { type: String },
 })
 
 export default mongoose.model<BookDocument>('Book', bookSchema)

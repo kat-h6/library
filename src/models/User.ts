@@ -6,6 +6,14 @@ export type UserDocument = Document & {
   email: string
   password: string
   isAdmin: boolean
+  bookings: mongoose.Schema.Types.ObjectId[]
+}
+
+export type Bookings = {
+  startDate: Date
+  endDate: Date
+  user: string
+  Book: string
 }
 
 const userSchema = new mongoose.Schema({
@@ -30,6 +38,13 @@ const userSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
+  bookings: [
+    {
+      books: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
+      startDate: { type: Date, required: true },
+      endDate: { type: Date, required: true },
+    },
+  ],
 })
 
 export default mongoose.model<UserDocument>('User', userSchema)

@@ -6,11 +6,12 @@ const create = async (user: UserDocument): Promise<UserDocument> => {
 }
 
 const findById = async (userId: string): Promise<UserDocument> => {
-  const foundUser = await User.findById(userId)
+  const foundUser = await User.findById(userId).populate('bookings')
 
   if (!foundUser) {
     throw new NotFoundError(`User ${userId} not found`)
   }
+  console.log(foundUser.bookings)
 
   return foundUser
 }

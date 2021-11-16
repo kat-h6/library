@@ -56,7 +56,7 @@ const users = [
 ]
 
 users.map(async (u, index) => {
-  await u.save(() => {
+  await u.save(async () => {
     if (index === users.length - 1) {
       console.log('Done!')
       mongoose.disconnect()
