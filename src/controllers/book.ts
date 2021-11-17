@@ -119,3 +119,27 @@ export const findAll = async (
     }
   }
 }
+
+// prettier-ignore
+export const filterBooks = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const filters: any = {}
+    if (req.query.ISBN) {
+      filters.ISBN = req.query.ISBN
+    }
+    if (req.query.title) {
+      filters.title = req.query.title
+    }
+    res.json(await BookService.filterBooks(filters))
+  } catch (error) {
+    if (error instanceof Error && error.name == 'ValidationError') {
+      next(new BadRequestError('Invalid Request', error))
+    } else {
+      next(error)
+    }
+  }
+}

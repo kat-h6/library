@@ -6,6 +6,7 @@ import {
   deleteBook,
   findAll,
   updateBook,
+  filterBooks,
 } from '../controllers/book'
 
 const router = express.Router()
@@ -16,5 +17,6 @@ router.get('/:bookId', findById)
 router.put('/:bookId', updateBook)
 router.delete('/:bookId', deleteBook)
 router.post('/', createBook)
+router.get('/search', filterBooks)
 
 export default router

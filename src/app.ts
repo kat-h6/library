@@ -7,6 +7,7 @@ import bookRouter from './routers/book'
 import userRouter from './routers/user'
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import apiContentType from './middlewares/apiContentType'
+import { filterBooks } from './controllers/book'
 
 dotenv.config({ path: '.env' })
 const app = express()
@@ -23,6 +24,8 @@ app.use(lusca.xssProtection(true))
 // Use movie router
 app.use('/api/v1/books', bookRouter)
 app.use('/api/v1/users', userRouter)
+//filtering
+app.get('/api/v1/search', filterBooks)
 // Custom API error handler
 app.use(apiErrorHandler)
 
