@@ -6,14 +6,13 @@ export type UserDocument = Document & {
   email: string
   password: string
   isAdmin: boolean
-  bookings: mongoose.Schema.Types.ObjectId[]
+  bookings: Bookings[]
 }
 
 export type Bookings = {
   startDate: Date
   endDate: Date
-  user: string
-  Book: string
+  books: string
 }
 
 const userSchema = new mongoose.Schema({
