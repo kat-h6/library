@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 
 import Book from '../models/Book'
 import BookService from '../services/book'
-import { BadRequestError } from '../helpers/apiError'
+import { BadRequestError, NotFoundError } from '../helpers/apiError'
 
 // POST /book
 export const createBook = async (
@@ -95,11 +95,7 @@ export const findById = async (
   try {
     res.json(await BookService.findById(req.params.bookId))
   } catch (error) {
-    if (error instanceof Error && error.name == 'ValidationError') {
-      next(new BadRequestError('Invalid Request', error))
-    } else {
-      next(error)
-    }
+    next(new NotFoundError('Book not found', error))
   }
 }
 

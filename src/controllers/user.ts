@@ -1,8 +1,14 @@
 import { Request, Response, NextFunction } from 'express'
+import jwt from 'jsonwebtoken'
 
 import User from '../models/User'
 import UserService from '../services/user'
-import { BadRequestError } from '../helpers/apiError'
+import {
+  NotFoundError,
+  BadRequestError,
+  InternalServerError,
+} from '../helpers/apiError'
+import { JWT_SECRET } from '../util/secrets'
 
 // POST /users
 export const createUser = async (
@@ -71,6 +77,31 @@ export const deleteUser = async (
   }
 }
 
+export const authenticate = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { email, id, firstName, lastName } = req.user as any
+    const token = await jwt.sign(
+      {
+        email,
+        id,
+        firstName,
+        lastName,
+      },
+      JWT_SECRET,
+      {
+        expiresIn: '1h',
+      }
+    )
+    res.json({ token, id, firstName, lastName })
+  } catch (error) {
+    return next(new InternalServerError())
+  }
+}
+
 // GET /users/:userId
 export const findById = async (
   req: Request,
@@ -80,11 +111,7 @@ export const findById = async (
   try {
     res.json(await UserService.findById(req.params.userId))
   } catch (error) {
-    if (error instanceof Error && error.name == 'ValidationError') {
-      next(new BadRequestError('Invalid Request', error))
-    } else {
-      next(error)
-    }
+    next(new NotFoundError('User not found', error))
   }
 }
 

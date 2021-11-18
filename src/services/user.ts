@@ -6,14 +6,30 @@ const create = async (user: UserDocument): Promise<UserDocument> => {
 }
 
 const findById = async (userId: string): Promise<UserDocument> => {
-  const foundUser = await User.findById(userId).populate('bookings')
+  const foundUser = await User.findById(userId)
 
   if (!foundUser) {
     throw new NotFoundError(`User ${userId} not found`)
   }
-  console.log(foundUser.bookings)
 
   return foundUser
+}
+
+const findOrCreate = async (userPayload: Partial<UserDocument>) => {
+  return User.findOne({ email: userPayload.email })
+    .exec()
+    .then((user) => {
+      if (!user) {
+        const newUser = new User({
+          email: userPayload.email,
+          firstName: userPayload.firstName,
+          lastName: userPayload.lastName,
+        })
+        newUser.save()
+        return newUser
+      }
+      return user
+    })
 }
 
 const findAll = async (): Promise<UserDocument[]> => {
@@ -51,4 +67,5 @@ export default {
   findAll,
   update,
   deleteUser,
+  findOrCreate,
 }
