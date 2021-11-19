@@ -1,0 +1,72 @@
+// book actions
+GET http://localhost:3000/api/v1/books HTTP/1.1
+####
+
+POST http://localhost:3000/api/v1/books HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Oryx and Crake",
+  "authors": "Margaret Atwood",
+  "description": "Oryx and Crake is at once an unforgettable love story and a compelling vision of the future. Snowman, known as Jimmy before mankind was overwhelmed by a plague, is struggling to survive in a world where he may be the last human, and mourning the loss of his best friend, Crake, and the beautiful and elusive Oryx whom they both loved. In search of answers, Snowman embarks on a journey–with the help of the green-eyed Children of Crake–through the lush wilderness that was so recently a great city, until powerful corporations took mankind on an uncontrolled genetic engineering ride. Margaret Atwood projects us into a near future that is both all too familiar and beyond our imagining.",
+  "isAvailable": true
+}
+####
+
+DELETE http://localhost:3000/api/v1/books/618b9abf5e380a05477440da HTTP/1.1
+
+####
+
+PUT http://localhost:3000/api/v1/books/618b9ab65e380a05477440d8 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Oryx and Crake",
+  "authors": "Margaret Atwood",
+  "description": "Oryx and Crake is at once an unforgettable love story and a compelling vision of the future. Snowman, known as Jimmy before mankind was overwhelmed by a plague, is struggling to survive in a world where he may be the last human, and mourning the loss of his best friend, Crake, and the beautiful and elusive Oryx whom they both loved. In search of answers, Snowman embarks on a journey–with the help of the green-eyed Children of Crake–through the lush wilderness that was so recently a great city, until powerful corporations took mankind on an uncontrolled genetic engineering ride. Margaret Atwood projects us into a near future that is both all too familiar and beyond our imagining.",
+  "isAvailable": false
+}
+
+###
+//user actions
+
+GET http://localhost:3000/api/v1/users HTTP/1.1
+
+####
+POST http://localhost:3000/api/v1/users HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "Kathy",
+  "lastName": "H",
+  "email": "kathy123@gmail.com",
+  "password": "kathy123",
+  "isAdmin": "true"
+}
+
+####
+
+GET http://localhost:3000/api/v1/users/618e74d0fad48c5a69c4c949
+
+####
+
+DELETE http://localhost:3000/api/v1/users/618d61250b8c182b14b1add4 HTTP/1.1
+
+
+####
+POST http://localhost:3000/api/v1/bookings HTTP/1.1
+content-type: application/json
+
+{
+  "user": "618e74d0fad48c5a69c4c949",
+  "book": "618e74e0fad48c5a69c4c94b",
+  "startDate": "November 10, 2021 03:24:00",
+  "endDate": "December 1, 2021 03:24:00"
+}
+
+###
+GET http://localhost:3000/api/v1/bookings 
+
+###
+
+GET http://localhost:3000/api/v1/bookings/618e7642fad48c5a69c4c956 HTTP/1.1
