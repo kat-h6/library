@@ -1,8 +1,8 @@
 // book actions
-GET http://localhost:3000/api/v1/books HTTP/1.1
+GET http://localhost:5000/api/v1/books HTTP/1.1
 ####
 
-POST http://localhost:3000/api/v1/books HTTP/1.1
+POST http://localhost:5000/api/v1/books HTTP/1.1
 content-type: application/json
 
 {
@@ -13,11 +13,11 @@ content-type: application/json
 }
 ####
 
-DELETE http://localhost:3000/api/v1/books/618b9abf5e380a05477440da HTTP/1.1
+DELETE http://localhost:5000/api/v1/books/618b9abf5e380a05477440da HTTP/1.1
 
 ####
 
-PUT http://localhost:3000/api/v1/books/618b9ab65e380a05477440d8 HTTP/1.1
+PUT http://localhost:5000/api/v1/books/618b9ab65e380a05477440d8 HTTP/1.1
 content-type: application/json
 
 {
@@ -30,10 +30,10 @@ content-type: application/json
 ###
 //user actions
 
-GET http://localhost:3000/api/v1/users HTTP/1.1
+GET http://localhost:5000/api/v1/users HTTP/1.1
 
 ####
-POST http://localhost:3000/api/v1/users HTTP/1.1
+POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
@@ -46,15 +46,15 @@ content-type: application/json
 
 ####
 
-GET http://localhost:3000/api/v1/users/618e74d0fad48c5a69c4c949
+GET http://localhost:5000/api/v1/users/618e74d0fad48c5a69c4c949
 
 ####
 
-DELETE http://localhost:3000/api/v1/users/618d61250b8c182b14b1add4 HTTP/1.1
+DELETE http://localhost:5000/api/v1/users/618d61250b8c182b14b1add4 HTTP/1.1
 
 
 ####
-POST http://localhost:3000/api/v1/bookings HTTP/1.1
+POST http://localhost:5000/api/v1/bookings HTTP/1.1
 content-type: application/json
 
 {
@@ -65,7 +65,7 @@ content-type: application/json
 }
 
 ###
-GET http://localhost:3000/api/v1/bookings 
+GET http://localhost:5000/api/v1/bookings 
 
 ###
 

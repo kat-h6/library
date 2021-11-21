@@ -13,9 +13,17 @@ import {
 const router = express.Router()
 
 // Every path we define here will get /api/v1/users prefix
-router.get('/', findAll)
-router.get('/:userId', findById)
-router.put('/:userId', updateUser)
+router.get('/', passport.authenticate('jwt', { session: false }), findAll)
+router.get(
+  '/:userId',
+  passport.authenticate('jwt', { session: false }),
+  findById
+)
+router.put(
+  '/:userId',
+  passport.authenticate('jwt', { session: false }),
+  updateUser
+)
 router.delete('/:userId', deleteUser)
 router.post('/', createUser)
 router.post(

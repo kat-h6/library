@@ -15,6 +15,15 @@ const findById = async (userId: string): Promise<UserDocument> => {
   return foundUser
 }
 
+const findUserByEmail = async (userEmail: string): Promise<UserDocument> => {
+  const foundUser = await User.findOne({ email: userEmail })
+
+  if (!foundUser) {
+    throw new NotFoundError(`User with email ${userEmail} not found`)
+  }
+  return foundUser
+}
+
 const findOrCreate = async (userPayload: Partial<UserDocument>) => {
   return User.findOne({ email: userPayload.email })
     .exec()
@@ -68,4 +77,5 @@ export default {
   update,
   deleteUser,
   findOrCreate,
+  findUserByEmail,
 }
