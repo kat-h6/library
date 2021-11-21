@@ -5,7 +5,7 @@ import compression from 'compression'
 import passport from 'passport'
 import cors from 'cors'
 
-import { googleStrategy } from './config/passport'
+import { googleStrategy, jwtStrategy } from './config/passport'
 import bookRouter from './routers/book'
 import userRouter from './routers/user'
 import apiErrorHandler from './middlewares/apiErrorHandler'
@@ -26,9 +26,10 @@ app.use(express.json())
 app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
 app.use(cors())
-
-// Use movie router
 passport.use(googleStrategy)
+passport.use(jwtStrategy)
+
+// routers
 app.use('/api/v1/books', bookRouter)
 app.use('/api/v1/users', userRouter)
 //filtering
