@@ -3,8 +3,9 @@ import {
   ProductActions,
   ADD_PRODUCT,
   REMOVE_PRODUCT,
-} from '../../types'
+} from '../../types/types'
 
+//prettier-ignore
 export default function product(
   state: ProductState = {
     inCart: [],

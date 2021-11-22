@@ -5,7 +5,7 @@ import {
   REMOVE_PRODUCT,
   ProductActions,
   Product,
-} from '../../types'
+} from '../../types/types'
 
 export function addProduct(product: Product): ProductActions {
   return {

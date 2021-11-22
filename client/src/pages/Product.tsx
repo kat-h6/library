@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { AppState } from '../types'
+import { AppState } from '../types/types'
 
 export default function Product() {
   const { id } = useParams()

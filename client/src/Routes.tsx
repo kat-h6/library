@@ -9,8 +9,8 @@ import Product from './pages/Product'
 
 const Routes = () => (
   <Switch>
-    <Route  path="/" element={<Home />} />
-    <Route  path="/products/:id" element={<Product />} />
+    <Route path="/" element={<Home />} />
+    <Route path="/products/:id" element={<Product />} />
   </Switch>
 )
 
