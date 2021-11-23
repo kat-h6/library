@@ -12,6 +12,7 @@ const initState: AppState = {
   },
   books: {
     books: [],
+    selectedBook: null,
   },
 }
 

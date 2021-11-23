@@ -6,6 +6,7 @@ import { GoogleLogin } from 'react-google-login'
 
 import { AppState } from '../types/types'
 import { retrieveBooks } from '../redux/actions/book'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
   const dispatch = useDispatch()
@@ -30,6 +31,7 @@ export default function Home() {
 
   return (
     <>
+      <h1>The Little Local Library</h1>
       <GoogleLogin
         clientId="566595242960-kl4aklq9e7391q0soj2idrb04prftnmb.apps.googleusercontent.com"
         buttonText="Login"
@@ -37,7 +39,11 @@ export default function Home() {
         onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
       />
-      {console.log(books)}
+      {books.map((book) => (
+        <Link key={book._id} to={`/books/${book._id}`}>
+          <img src={book.imageUrl} alt="book cover" />
+        </Link>
+      ))}
       {/* {products.length <= 0 && <div>No products in cart</div>}
       <ul>
         {products.map((p) => (
