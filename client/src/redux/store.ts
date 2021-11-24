@@ -14,6 +14,9 @@ const initState: AppState = {
     books: [],
     selectedBook: null,
   },
+  user: {
+    user: null,
+  },
 }
 
 export default function makeStore(initialState = initState) {

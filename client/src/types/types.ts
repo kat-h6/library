@@ -1,4 +1,5 @@
 import { BookState } from './book'
+import { UserState } from './user'
 
 // Action types
 export const ADD_PRODUCT = 'ADD_PRODUCT'
@@ -35,4 +36,5 @@ export type ProductState = {
 export type AppState = {
   product: ProductState
   books: BookState
+  user: UserState
 }

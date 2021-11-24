@@ -22,6 +22,7 @@ export default function BookDetails() {
     <>
       <h1>Book page</h1>
       <h2>{book.title}</h2>
+      <img src={book.imageUrl} alt="book cover" />
     </>
   )
 }
