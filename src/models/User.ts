@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
   },
   bookings: [
     {
-      books: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
+      book: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
       startDate: { type: Date, required: true },
       endDate: { type: Date, required: true },
     },

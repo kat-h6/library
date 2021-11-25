@@ -35,6 +35,7 @@ const findOrCreate = async (userPayload: Partial<UserDocument>) => {
           lastName: userPayload.lastName,
         })
         newUser.save()
+        console.log(newUser)
         return newUser
       }
       return user
