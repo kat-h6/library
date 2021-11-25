@@ -10,4 +10,8 @@
 .navbar__link {
   color: white;
   margin-right: 8px;
+
+  &:hover {
+    color: #167347;
+  }
 }
