@@ -33,8 +33,14 @@ export default function NavBar() {
   }
 
   let button
+  let link
   if (user) {
     button = <Button onClick={() => dispatch(logOut())}>Logout</Button>
+    link = (
+      <Nav.Link href="#action1" className="navbar__link">
+        Dashboard
+      </Nav.Link>
+    )
   } else {
     button = (
       <GoogleLogin
@@ -51,7 +57,7 @@ export default function NavBar() {
     <Navbar expand="lg" variant="dark" className="navbar--blue">
       <Container fluid>
         <FontAwesomeIcon icon={faBookOpen} className="navbar__icon" />
-        <Navbar.Brand href="#">The Little Local Library</Navbar.Brand>
+        <Navbar.Brand href="/">The Little Local Library</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Form className="d-flex">
@@ -78,6 +84,7 @@ export default function NavBar() {
             navbarScroll
           ></Nav>
         </Navbar.Collapse>
+        {link}
         {button}
       </Container>
     </Navbar>
