@@ -5,14 +5,20 @@ import {
   Container,
   Nav,
   Button,
+  DropdownButton,
   Form,
   FormControl,
+  Dropdown,
 } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
+
 import { logIn, logOut } from '../../redux/actions/user'
 import { AppState } from '../../types/types'
+import './NavBar.scss'
 
 export default function NavBar() {
   const dispatch = useDispatch()
@@ -42,12 +48,22 @@ export default function NavBar() {
   }
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar expand="lg" variant="dark" className="navbar--blue">
       <Container fluid>
+        <FontAwesomeIcon icon={faBookOpen} className="navbar__icon" />
         <Navbar.Brand href="#">The Little Local Library</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Form className="d-flex">
+            <DropdownButton
+              id="dropdown-basic-button"
+              title="All"
+              variant="success"
+            >
+              <Dropdown.Item href="#/action-1">Title</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">ISBN</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </DropdownButton>
             <FormControl
               type="search"
               placeholder="Search"

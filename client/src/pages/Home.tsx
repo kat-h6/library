@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { retrieveBooks } from '../redux/actions/book'
 import NavBar from '../components/NavBar/index'
 import BookGrid from '../components/BookGrid/index'
+import Banner from '../components/Banner/index'
 import { AppState } from '../types/types'
 
 export default function Home() {
@@ -32,6 +33,8 @@ export default function Home() {
     <>
       <NavBar />
       {greeting}
+      <Banner />
+      <h3>Books We Love</h3>
       <BookGrid />
     </>
   )
