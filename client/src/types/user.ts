@@ -16,6 +16,7 @@ export type User = {
   email: string
   password?: string
   bookings?: Booking[]
+  data?: any
 }
 
 export type LogIn = {

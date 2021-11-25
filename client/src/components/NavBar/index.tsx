@@ -9,10 +9,36 @@ import {
   FormControl,
 } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { logIn, logOut } from '../../redux/actions/user'
+import { AppState } from '../../types/types'
 
 export default function NavBar() {
+  const dispatch = useDispatch()
+  const user = useSelector((state: AppState) => state.user.user)
+
   const responseGoogle = async (response: any) => {
-    console.log(response.profileObj)
+    let res = await axios.post(
+      'http://localhost:5000/api/v1/users/google-authenticate',
+      { id_token: response.tokenObj.id_token }
+    )
+    dispatch(logIn(res.data))
+  }
+
+  let button
+  if (user) {
+    button = <Button onClick={() => dispatch(logOut())}>Logout</Button>
+  } else {
+    button = (
+      <GoogleLogin
+        clientId="566595242960-kl4aklq9e7391q0soj2idrb04prftnmb.apps.googleusercontent.com"
+        buttonText="Login"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        cookiePolicy={'single_host_origin'}
+      />
+    )
   }
 
   return (
@@ -36,13 +62,7 @@ export default function NavBar() {
             navbarScroll
           ></Nav>
         </Navbar.Collapse>
-        <GoogleLogin
-          clientId="566595242960-kl4aklq9e7391q0soj2idrb04prftnmb.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'single_host_origin'}
-        />
+        {button}
       </Container>
     </Navbar>
   )

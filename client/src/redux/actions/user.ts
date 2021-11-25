@@ -1,10 +1,10 @@
-import { LogIn, LogOut, LOG_IN, LOG_OUT, User } from '../../types/user'
+import { LogIn, LogOut, LOG_IN, LOG_OUT } from '../../types/user'
 
-export function logIn(user: User): LogIn {
+export function logIn(res: any): LogIn {
   return {
     type: LOG_IN,
     payload: {
-      user: user,
+      user: res,
     },
   }
 }

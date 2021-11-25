@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { AppState } from '../types/types'
 import { retrieveBooks } from '../redux/actions/book'
-import { Link } from 'react-router-dom'
-import NavBar from '../components/NavBar'
+import NavBar from '../components/NavBar/index'
+import BookGrid from '../components/BookGrid/index'
+import { AppState } from '../types/types'
 
 export default function Home() {
   const dispatch = useDispatch()
-  const books = useSelector((state: AppState) => state.books.books)
 
+  const user = useSelector((state: AppState) => state.user.user)
+
+  let greeting
+  if (user) {
+    greeting = <h4>Welcome back {user.firstName}</h4>
+  }
   // const handleAddProduct = () => {
   //   const product: Product = {
   //     id: (+new Date()).toString(),
@@ -26,11 +31,8 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      {books.map((book) => (
-        <Link key={book._id} to={`/books/${book._id}`}>
-          <img src={book.imageUrl} alt="book cover" />
-        </Link>
-      ))}
+      {greeting}
+      <BookGrid />
     </>
   )
 }
