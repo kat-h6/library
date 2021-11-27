@@ -1,15 +1,6 @@
 import React from 'react'
 import { GoogleLogin } from 'react-google-login'
-import {
-  Navbar,
-  Container,
-  Nav,
-  Button,
-  DropdownButton,
-  Form,
-  FormControl,
-  Dropdown,
-} from 'react-bootstrap'
+import { Navbar, Container, Nav, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,6 +9,7 @@ import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
 
 import { logIn, logOut } from '../../redux/actions/user'
 import { AppState } from '../../types/types'
+import Search from '../Search/index'
 import './NavBar.scss'
 
 export default function NavBar() {
@@ -56,33 +48,12 @@ export default function NavBar() {
   return (
     <Navbar expand="lg" variant="dark" className="navbar--blue">
       <Container fluid>
-        <FontAwesomeIcon icon={faBookOpen} className="navbar__icon" />
-        <Navbar.Brand href="/">The Little Local Library</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Brand href="/">
+          <FontAwesomeIcon icon={faBookOpen} className="navbar__icon" />
+          The Little Local Library
+        </Navbar.Brand>
         <Navbar.Collapse id="navbarScroll">
-          <Form className="d-flex">
-            <DropdownButton
-              id="dropdown-basic-button"
-              title="All"
-              variant="success"
-            >
-              <Dropdown.Item href="#/action-1">Title</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">ISBN</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </DropdownButton>
-            <FormControl
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          ></Nav>
+          <Search />
         </Navbar.Collapse>
         {link}
         {button}
