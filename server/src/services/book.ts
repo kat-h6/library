@@ -35,6 +35,10 @@ const filterBooks = async (filters: any): Promise<BookDocument[]> => {
   } else if ('genre' in filters) {
     query = { genres: filters['genre'] }
     foundBooks = await Book.find(query)
+  } else if ('author' in filters) {
+    query = { authors: { $elemMatch: { name: filters['author'] } } }
+    foundBooks = await Book.find(query)
+    console.log(foundBooks)
   }
   if (!foundBooks) {
     return []

@@ -19,7 +19,7 @@ export default function BookDetails() {
     <>
       <NavBar />
       <Container>
-        <h2>Search Results</h2>
+        <h2>{books.length} Search Results</h2>
         <Row>
           {books.map((book) => (
             <Col md key={book._id} className="margin-top">

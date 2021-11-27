@@ -133,6 +133,9 @@ export const filterBooks = async (
     if (req.query.genre) {
       filters.genre = req.query.genre
     }
+    if (req.query.author) {
+      filters.author = req.query.author
+    }
     res.json(await BookService.filterBooks(filters))
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {

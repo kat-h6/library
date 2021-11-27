@@ -24,9 +24,6 @@ export default function BookDetails() {
       <NavBar />
       <h2>{book.title}</h2>
       <p>{book.ISBN}</p>
-      <p>
-        {book.authors[0].firstName} {book.authors[0].lastName}
-      </p>
       <img src={book.imageUrl} alt="book cover" />
       <p>{book.description}</p>
       <p>{book.publishedYear}</p>

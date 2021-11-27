@@ -10,6 +10,7 @@ import { retrieveFilteredBooks } from '../../redux/actions/book'
 
 const options = [
   { value: 'title', label: 'Title' },
+  { value: 'author', label: 'Author' },
   { value: 'ISBN', label: 'ISBN' },
   { value: 'genre', label: 'Genre' },
 ]
@@ -55,24 +56,6 @@ export default function Search() {
           Search
         </Button>
       </Form>
-      {/* <Form className="d-flex">
-        <DropdownButton
-          id="dropdown-basic-button"
-          title="All"
-          variant="success"
-        >
-          <Dropdown.Item href="#/title">Title</Dropdown.Item>
-          <Dropdown.Item href="#/isbn">ISBN</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-        </DropdownButton>
-        <FormControl
-          type="search"
-          placeholder="Search"
-          className="me-2"
-          aria-label="Search"
-        />
-        <Button variant="outline-success">Search</Button>
-      </Form> */}
     </>
   )
 }

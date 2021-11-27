@@ -3,8 +3,7 @@ export const SELECT_BOOK = 'SELECT_BOOK'
 export const FILTER_BOOKS = 'FILTER_BOOKS'
 
 export type Author = {
-  firstName: string
-  lastName: string
+  name: string
   author: string
 }
 

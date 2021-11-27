@@ -1,8 +1,7 @@
 import mongoose, { Document } from 'mongoose'
 
 export type Authors = {
-  firstName: string
-  lastName: string
+  name: string
   author: string
 }
 
@@ -26,8 +25,7 @@ const bookSchema = new mongoose.Schema({
   authors: [
     {
       author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
-      firstName: { type: String, required: true },
-      lastName: { type: String, required: true },
+      name: { type: String, required: true },
     },
   ],
   description: { type: String },
