@@ -15,6 +15,11 @@ const options = [
   { value: 'genre', label: 'Genre' },
 ]
 
+type Option = {
+  value: string
+  label: string
+}
+
 export default function Search() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -26,20 +31,22 @@ export default function Search() {
       query: { label: 'title', value: 'title' },
     },
     onSubmit: (values) => {
-      console.log(values)
       dispatch(retrieveFilteredBooks(values))
       navigate('/books/search')
     },
   })
 
-  const defaultValue = (options: any, value: any) => {
-    return options ? options.find((option: any) => option.value === value) : ''
+  const defaultValue = (options: Option[], value: any) => {
+    return options
+      ? options.find((option: Option) => option.value === value)
+      : ''
   }
 
   return (
     <>
       <Form className="d-flex" onSubmit={formik.handleSubmit}>
         <Select
+          name="Title"
           options={options}
           value={defaultValue(options, formik.values.query)}
           onChange={(value) => formik.setFieldValue('query', value)}
