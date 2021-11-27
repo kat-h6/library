@@ -1,7 +1,18 @@
 .form__input {
   width: 250px;
+  border-radius: 0 !important;
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  margin-right: 6px;
 }
 
 .form__dropdown {
   color: black;
+  border-radius: 0 !important;
+}
+
+.css-1s2u09g-control {
+  border-radius: 0 !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
 }

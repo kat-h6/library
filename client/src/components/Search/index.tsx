@@ -46,7 +46,6 @@ export default function Search() {
     <>
       <Form className="d-flex" onSubmit={formik.handleSubmit}>
         <Select
-          name="Title"
           options={options}
           value={defaultValue(options, formik.values.query)}
           onChange={(value) => formik.setFieldValue('query', value)}
