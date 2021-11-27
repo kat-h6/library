@@ -11,6 +11,7 @@ import { retrieveFilteredBooks } from '../../redux/actions/book'
 const options = [
   { value: 'title', label: 'Title' },
   { value: 'ISBN', label: 'ISBN' },
+  { value: 'genre', label: 'Genre' },
 ]
 
 export default function Search() {
