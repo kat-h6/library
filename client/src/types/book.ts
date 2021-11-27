@@ -21,13 +21,12 @@ export type Book = {
   imageUrl: string
 }
 
-export type Query = {
+type Query = {
   value: string
   label: string
 }
-
 export type Values = {
-  query: string
+  query: Query
   search: string
 }
 

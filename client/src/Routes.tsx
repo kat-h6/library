@@ -7,12 +7,14 @@ import { Routes as Switch, Route } from 'react-router-dom' // updated to latest
 import Home from './pages/Home'
 import Product from './pages/Product'
 import BookDetails from './pages/BookDetails'
+import Search from './pages/Search'
 
 const Routes = () => (
   <Switch>
     <Route path="/" element={<Home />} />
     <Route path="/books/:bookId" element={<BookDetails />} />
     <Route path="/products/:id" element={<Product />} />
+    <Route path="/books/search" element={<Search />} />
   </Switch>
 )
 

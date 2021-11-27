@@ -3,6 +3,7 @@ import { Form, FormControl, Button } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import Select from 'react-select'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import './Search.scss'
 import { retrieveFilteredBooks } from '../../redux/actions/book'
@@ -14,14 +15,18 @@ const options = [
 
 export default function Search() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const formik = useFormik({
     initialValues: {
       search: 'search',
-      query: 'title',
+      query: { label: 'title', value: 'title' },
     },
     onSubmit: (values) => {
+      console.log(values)
       dispatch(retrieveFilteredBooks(values))
+      navigate('/books/search')
     },
   })
 

@@ -7,6 +7,8 @@ import {
   SelectBook,
   SELECT_BOOK,
   Values,
+  FilterBooks,
+  FILTER_BOOKS,
 } from '../../types/book'
 
 export function fetchAllBooks(books: Book[]): FetchAllBooks {
@@ -27,11 +29,21 @@ export function selectBook(book: Book): SelectBook {
   }
 }
 
+export function filterBooks(books: Book[]): FilterBooks {
+  return {
+    type: FILTER_BOOKS,
+    payload: {
+      books: books,
+    },
+  }
+}
+
 export function retrieveFilteredBooks(values: Values) {
   return (dispatch: Dispatch) => {
-    return fetch(`/api/v1/search?${values.query}=${values.search}`)
+    console.log(values)
+    return fetch(`/api/v1/search?${values.query.value}=${values.search}`)
       .then((resp) => resp.json())
-      .then((books) => console.log(books))
+      .then((books) => dispatch(filterBooks(books)))
   }
 }
 

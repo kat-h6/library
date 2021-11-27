@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from '../types/types'
 import { retrieveBook } from '../redux/actions/book'
 import NavBar from '../components/NavBar'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function BookDetails() {
   const { bookId } = useParams()
@@ -24,6 +23,7 @@ export default function BookDetails() {
     <>
       <NavBar />
       <h2>{book.title}</h2>
+      <p>{book.ISBN}</p>
       <p>
         {book.authors[0].firstName} {book.authors[0].lastName}
       </p>
