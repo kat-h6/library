@@ -1,5 +1,6 @@
 export const FETCH_ALL_BOOKS = 'FETCH_ALL_BOOKS'
 export const SELECT_BOOK = 'SELECT_BOOK'
+export const FILTER_BOOKS = 'FILTER_BOOKS'
 
 export type Author = {
   firstName: string
@@ -20,6 +21,16 @@ export type Book = {
   imageUrl: string
 }
 
+export type Query = {
+  value: string
+  label: string
+}
+
+export type Values = {
+  query: string
+  search: string
+}
+
 export type FetchAllBooks = {
   type: typeof FETCH_ALL_BOOKS
   payload: {
@@ -30,6 +41,7 @@ export type FetchAllBooks = {
 export type BookState = {
   books: Book[]
   selectedBook: Book | null
+  filteredBooks: Book[]
 }
 
 export type SelectBook = {
@@ -39,4 +51,11 @@ export type SelectBook = {
   }
 }
 
-export type BookActions = FetchAllBooks | SelectBook
+export type FilterBooks = {
+  type: typeof FILTER_BOOKS
+  payload: {
+    books: Book[]
+  }
+}
+
+export type BookActions = FetchAllBooks | SelectBook | FilterBooks

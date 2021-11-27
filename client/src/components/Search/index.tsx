@@ -1,15 +1,19 @@
+import React from 'react'
 import { Form, FormControl, Button } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import Select from 'react-select'
+import { useDispatch } from 'react-redux'
 
 import './Search.scss'
+import { retrieveFilteredBooks } from '../../redux/actions/book'
 
 const options = [
   { value: 'title', label: 'Title' },
   { value: 'ISBN', label: 'ISBN' },
 ]
 
-export default function index() {
+export default function Search() {
+  const dispatch = useDispatch()
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const formik = useFormik({
     initialValues: {
@@ -17,7 +21,7 @@ export default function index() {
       query: 'title',
     },
     onSubmit: (values) => {
-      console.log(values)
+      dispatch(retrieveFilteredBooks(values))
     },
   })
 

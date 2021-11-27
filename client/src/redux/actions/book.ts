@@ -6,6 +6,7 @@ import {
   Book,
   SelectBook,
   SELECT_BOOK,
+  Values,
 } from '../../types/book'
 
 export function fetchAllBooks(books: Book[]): FetchAllBooks {
@@ -23,6 +24,14 @@ export function selectBook(book: Book): SelectBook {
     payload: {
       book: book,
     },
+  }
+}
+
+export function retrieveFilteredBooks(values: Values) {
+  return (dispatch: Dispatch) => {
+    return fetch(`/api/v1/search?${values.query}=${values.search}`)
+      .then((resp) => resp.json())
+      .then((books) => console.log(books))
   }
 }
 

@@ -52,6 +52,7 @@ export default function NavBar() {
           <FontAwesomeIcon icon={faBookOpen} className="navbar__icon" />
           The Little Local Library
         </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="navbarScroll">
           <Search />
         </Navbar.Collapse>

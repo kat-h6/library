@@ -13,9 +13,7 @@ export default function Home() {
   const user = useSelector((state: AppState) => state.user.user)
 
   let greeting
-  if (user) {
-    greeting = <h4>Welcome back {user.firstName}</h4>
-  }
+  user ? (greeting = <h4>Welcome back {user.firstName}</h4>) : (greeting = null)
   // const handleAddProduct = () => {
   //   const product: Product = {
   //     id: (+new Date()).toString(),

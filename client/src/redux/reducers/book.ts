@@ -9,7 +9,8 @@ import {
 export default function books(
   state: BookState = {
     books: [],
-    selectedBook: null
+    selectedBook: null,
+    filteredBooks: []
   },
   action: BookActions
 ): BookState {
