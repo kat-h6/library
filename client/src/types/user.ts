@@ -1,10 +1,9 @@
-import { Book } from './book'
-
 export const LOG_IN = 'LOG_IN'
 export const LOG_OUT = 'LOG_OUT'
+export const CREATE_BOOKING = 'CREATE_BOOKING'
 
 export type Booking = {
-  book: Book
+  book: string
   startDate: Date
   endDate: Date
 }
