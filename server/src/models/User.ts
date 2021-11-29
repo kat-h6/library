@@ -13,6 +13,7 @@ export type Bookings = {
   startDate: Date
   endDate: Date
   books: string
+  _id?: string
 }
 
 const userSchema = new mongoose.Schema({

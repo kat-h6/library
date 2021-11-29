@@ -70,3 +70,17 @@ GET http://localhost:5000/api/v1/bookings
 ###
 
 GET http://localhost:3000/api/v1/bookings/618e7642fad48c5a69c4c956 HTTP/1.1
+
+###
+
+PATCH http://localhost:5000/api/v1/users/61a49c021e69081033f1a351/bookings HTTP/1.1
+content-type: application/json 
+
+{
+  "book": "61a223399c58b9aebe7120ff",
+  "startDate" : "November 10, 2021 03:24:00",
+  "endDate": "December 1, 2021 03:24:00"
+}
+
+###
+DELETE http://localhost:5000/api/v1/users/61a49c021e69081033f1a351/bookings/61a4a81f54aa76182032b2be HTTP/1.1
