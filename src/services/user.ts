@@ -1,4 +1,4 @@
-import User, { UserDocument } from '../models/User'
+import User, { Bookings, UserDocument } from '../models/User'
 import { NotFoundError } from '../helpers/apiError'
 
 const create = async (user: UserDocument): Promise<UserDocument> => {
@@ -71,6 +71,32 @@ const deleteUser = async (userId: string): Promise<UserDocument | null> => {
   return foundUser
 }
 
+const createBooking = async (bookingDetails: Bookings, userId: string) => {
+  const foundUser = await User.findById(userId)
+
+  if (!foundUser) {
+    throw new NotFoundError(`User ${userId} not found`)
+  }
+
+  foundUser.bookings.push(bookingDetails)
+
+  return foundUser.save()
+}
+
+const deleteBooking = async (bookingId: string, userId: string) => {
+  const foundUser = await User.findById(userId)
+
+  if (!foundUser) {
+    throw new NotFoundError(`User ${userId} not found`)
+  }
+
+  foundUser.bookings = foundUser.bookings.filter(
+    (booking: Bookings) => booking._id!.toString() !== bookingId
+  )
+
+  return foundUser.save()
+}
+
 export default {
   create,
   findById,
@@ -79,4 +105,6 @@ export default {
   deleteUser,
   findOrCreate,
   findUserByEmail,
+  createBooking,
+  deleteBooking,
 }

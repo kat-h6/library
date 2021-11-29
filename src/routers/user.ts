@@ -8,6 +8,8 @@ import {
   findAll,
   updateUser,
   authenticate,
+  createBooking,
+  deleteBooking,
 } from '../controllers/user'
 
 const router = express.Router()
@@ -31,5 +33,7 @@ router.post(
   passport.authenticate('google-id-token', { session: false }),
   authenticate
 )
+router.patch('/:userId/bookings', createBooking)
+router.delete('/:userId/bookings/:bookingId', deleteBooking)
 
 export default router
