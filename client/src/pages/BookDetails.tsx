@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from '../types/types'
 import { retrieveBook } from '../redux/actions/book'
 import NavBar from '../components/NavBar'
-import BookingForm from '../components/BookingForm'
+import BookingButton from '../components/BookingButton'
 
 export default function BookDetails() {
   const { bookId } = useParams()
@@ -29,7 +29,7 @@ export default function BookDetails() {
       <p>{book.description}</p>
       <p>{book.publishedYear}</p>
       <p>{book.publisher}</p>
-      <BookingForm />
+      <BookingButton />
       <Link to="/">Back</Link>
     </>
   )

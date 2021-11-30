@@ -7,7 +7,7 @@ import axios from 'axios'
 
 import { Booking, User } from '../../types/user'
 
-export default function BookingForm() {
+export default function BookingButton() {
   const navigate = useNavigate()
   const user = useSelector((state: AppState) => state.user.user)
   const { bookId } = useParams()
@@ -20,10 +20,16 @@ export default function BookingForm() {
       startDate: startDate,
       endDate: endDate,
     }
+
     return await axios.patch(
       `/api/v1/users/${user.id}/bookings`,
       bookingDetails
     )
+  }
+
+  const makeBookUnavailable = async (bookId: string) => {
+    const availability = { isAvailable: false }
+    return await axios.patch(`/api/v1/books/${bookId}`, availability)
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -33,6 +39,9 @@ export default function BookingForm() {
   ) => {
     if (user && bookId) {
       loanRequest(user, bookId)
+      console.log('loan was made')
+      makeBookUnavailable(bookId)
+      console.log('book unavailable')
       navigate(`/dashboard/${user.id}`)
     }
   }
