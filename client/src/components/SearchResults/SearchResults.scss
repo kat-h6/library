@@ -1,0 +1,30 @@
+.container--margin {
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.container__header {
+  text-align: center;
+  color: #0e2633;
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 48px;
+}
+
+.back-btn {
+  margin-top: 48px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #198754;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}

@@ -5,7 +5,7 @@ import Select from 'react-select'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import './Search.scss'
+import './SearchBar.scss'
 import { retrieveFilteredBooks } from '../../redux/actions/book'
 
 const options = [
@@ -20,7 +20,7 @@ type Option = {
   label: string
 }
 
-export default function Search() {
+export default function SearchBar() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

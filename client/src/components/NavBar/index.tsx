@@ -9,7 +9,7 @@ import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
 
 import { logIn, logOut } from '../../redux/actions/user'
 import { AppState } from '../../types/types'
-import Search from '../Search/index'
+import Search from '../SearchBar/index'
 import './NavBar.scss'
 
 export default function NavBar() {
