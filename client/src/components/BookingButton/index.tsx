@@ -37,6 +37,9 @@ export default function BookingButton() {
     user: User | null,
     bookId: string | undefined
   ) => {
+    if (!user) {
+      alert('Must be logged in')
+    }
     if (user && bookId) {
       loanRequest(user, bookId)
       console.log('loan was made')

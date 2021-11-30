@@ -24,12 +24,13 @@ export default function BookDetails() {
     <>
       <NavBar />
       <h2>{book.title}</h2>
-      <p>{book.ISBN}</p>
+      <p>{book.authors.map((author) => author.name)}</p>
+      <p>ISBN: {book.ISBN}</p>
       <img src={book.imageUrl} alt="book cover" />
       <p>{book.description}</p>
-      <p>{book.publishedYear}</p>
-      <p>{book.publisher}</p>
-      <BookingButton />
+      <p>Published: {book.publishedYear}</p>
+      <p>Publisher: {book.publisher}</p>
+      {book.isAvailable ? <BookingButton /> : <p>Currently on Loan</p>}
       <Link to="/">Back</Link>
     </>
   )
