@@ -28,6 +28,17 @@ content-type: application/json
 }
 
 ###
+
+PATCH http://localhost:5000/api/v1/books/61a223399c58b9aebe7120fd HTTP/1.1
+content-type: application/json
+
+{
+  "isAvailable": false
+}
+
+
+
+###
 //user actions
 
 GET http://localhost:5000/api/v1/users HTTP/1.1
