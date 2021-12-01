@@ -6,7 +6,7 @@ export const CREATE_BOOKING = 'CREATE_BOOKING'
 
 export type Booking = {
   _id?: string
-  book: Book | string
+  book: Book
   startDate: Date
   endDate: Date
 }
@@ -17,7 +17,7 @@ export type User = {
   lastName: string
   email: string
   password?: string
-  bookings: Booking[]
+  bookings?: Booking[]
   data?: any
 }
 

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { AppState } from '../../types/types'
 import axios from 'axios'
 
-import { Booking, User } from '../../types/user'
+import { User } from '../../types/user'
 
 export default function BookingButton() {
   const navigate = useNavigate()
@@ -15,7 +15,7 @@ export default function BookingButton() {
   const loanRequest = async (user: User, bookId: string) => {
     const startDate = new Date()
     const endDate = new Date(Date.now() + 12096e5)
-    const bookingDetails: Booking = {
+    const bookingDetails = {
       book: bookId,
       startDate: startDate,
       endDate: endDate,
