@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
 
-import { logIn, logOut } from '../../redux/actions/user'
+import { getUser, logOut } from '../../redux/actions/user'
 import { AppState } from '../../types/types'
 import Search from '../SearchBar/index'
 import './NavBar.scss'
@@ -21,7 +21,8 @@ export default function NavBar() {
       'http://localhost:5000/api/v1/users/google-authenticate',
       { id_token: response.tokenObj.id_token }
     )
-    dispatch(logIn(res.data))
+    console.log(res.data.id)
+    dispatch(getUser(res.data.id))
   }
 
   let button
@@ -29,7 +30,7 @@ export default function NavBar() {
   if (user) {
     button = <Button onClick={() => dispatch(logOut())}>Logout</Button>
     link = (
-      <Nav.Link href="#action1" className="navbar__link">
+      <Nav.Link href="localhost:3000/users/" className="navbar__link">
         Dashboard
       </Nav.Link>
     )
@@ -46,7 +47,7 @@ export default function NavBar() {
   }
 
   return (
-    <Navbar expand="lg" variant="dark" className="navbar--blue">
+    <Navbar expand="lg" variant="dark" sticky="top" className="navbar--blue">
       <Container fluid>
         <Navbar.Brand href="/">
           <FontAwesomeIcon icon={faBookOpen} className="navbar__icon" />

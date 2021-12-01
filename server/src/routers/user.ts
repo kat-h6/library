@@ -16,11 +16,7 @@ const router = express.Router()
 
 // Every path we define here will get /api/v1/users prefix
 router.get('/', passport.authenticate('jwt', { session: false }), findAll)
-router.get(
-  '/:userId',
-  passport.authenticate('jwt', { session: false }),
-  findById
-)
+router.get('/:userId', findById)
 router.put(
   '/:userId',
   passport.authenticate('jwt', { session: false }),

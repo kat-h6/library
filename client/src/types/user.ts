@@ -1,9 +1,12 @@
+import { Book } from './book'
+
 export const LOG_IN = 'LOG_IN'
 export const LOG_OUT = 'LOG_OUT'
 export const CREATE_BOOKING = 'CREATE_BOOKING'
 
 export type Booking = {
-  book: string
+  _id?: string
+  book: Book | string
   startDate: Date
   endDate: Date
 }
@@ -14,7 +17,7 @@ export type User = {
   lastName: string
   email: string
   password?: string
-  bookings?: Booking[]
+  bookings: Booking[]
   data?: any
 }
 
