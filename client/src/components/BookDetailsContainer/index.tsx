@@ -2,8 +2,9 @@ import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { retrieveFilteredBooks } from '../../redux/actions/book'
+import { useNavigate } from 'react-router-dom'
 
+import { retrieveFilteredBooks } from '../../redux/actions/book'
 import { Book } from '../../types/book'
 import BookingButton from '../BookingButton'
 import './BookDetailsContainer.scss'
@@ -14,6 +15,7 @@ type BookDetailsProps = {
 
 export default function BookDetailsContainer({ book }: BookDetailsProps) {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const searchGenre = (genreName: string) => {
     const values = {
@@ -24,6 +26,7 @@ export default function BookDetailsContainer({ book }: BookDetailsProps) {
       search: genreName,
     }
     dispatch(retrieveFilteredBooks(values))
+    navigate('/books/search')
   }
 
   return (
@@ -54,8 +57,13 @@ export default function BookDetailsContainer({ book }: BookDetailsProps) {
           <p>
             <small>ISBN: {book.ISBN}</small>
           </p>
-          {book.isAvailable ? <BookingButton /> : <p>Currently on Loan</p>}
-          <Link to="/">Back</Link>
+          <hr className="book-detail__border" />
+          <div className="button-container">
+            {book.isAvailable ? <BookingButton /> : <p>Currently on Loan</p>}
+            <Link to="/" className="book-detail__back-btn">
+              <Button variant="success">Back</Button>
+            </Link>
+          </div>
         </Col>
       </Row>
     </Container>
