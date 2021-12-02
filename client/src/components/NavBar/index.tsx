@@ -28,9 +28,11 @@ export default function NavBar() {
   let button
   let link
   if (user) {
+    console.log(user)
     button = <Button onClick={() => dispatch(logOut())}>Logout</Button>
+    let url = `localhost:3000/dashboard/${user._id}`
     link = (
-      <Nav.Link href="localhost:3000/users/" className="navbar__link">
+      <Nav.Link href={url} className="navbar__link">
         Dashboard
       </Nav.Link>
     )

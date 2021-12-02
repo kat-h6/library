@@ -12,6 +12,7 @@ export type Booking = {
 }
 
 export type User = {
+  _id?: string
   id: string
   firstName: string
   lastName: string

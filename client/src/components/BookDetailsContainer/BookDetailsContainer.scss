@@ -1,0 +1,39 @@
+.container--margin {
+  margin-top: 48px;
+}
+
+.book-image {
+  width: 60%;
+}
+
+.container__book-image {
+  display: flex;
+  justify-content: center;
+}
+
+.container--mb {
+  margin-bottom: 48px;
+}
+
+.container__header--blue {
+  color: #0e2633;
+}
+
+.container__book-detail p {
+  color: #0e2633;
+}
+
+.book-detail__border {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.book-detail__mt {
+  margin-top: 40px;
+}
+
+.genre-btn {
+  margin-right: 16px;
+}
