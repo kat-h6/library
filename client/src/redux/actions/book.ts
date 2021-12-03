@@ -41,7 +41,9 @@ export function filterBooks(books: Book[]): FilterBooks {
 export function retrieveFilteredBooks(values: Values) {
   return (dispatch: Dispatch) => {
     console.log(values)
-    return fetch(`/api/v1/search?${values.query.value}=${values.search}`)
+    return fetch(
+      `https://kat-h6-library.herokuapp.com/api/v1/search?${values.query.value}=${values.search}`
+    )
       .then((resp) => resp.json())
       .then((books) => dispatch(filterBooks(books)))
   }
@@ -49,7 +51,7 @@ export function retrieveFilteredBooks(values: Values) {
 
 export function retrieveBook(bookId: string | undefined) {
   return (dispatch: Dispatch) => {
-    return fetch(`/api/v1/books/${bookId}`)
+    return fetch(`https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}`)
       .then((resp) => resp.json())
       .then((book) => dispatch(selectBook(book)))
   }
@@ -57,7 +59,7 @@ export function retrieveBook(bookId: string | undefined) {
 // Async action processed by redux-thunk middleware
 export function retrieveBooks() {
   return (dispatch: Dispatch<any>) => {
-    return fetch('/api/v1/books')
+    return fetch('https://kat-h6-library.herokuapp.com/api/v1/books')
       .then((resp) => resp.json())
       .then((books) => dispatch(fetchAllBooks(books)))
   }

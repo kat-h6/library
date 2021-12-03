@@ -18,7 +18,7 @@ export function logOut(): LogOut {
 
 export function getUser(userId: string) {
   return (dispatch: Dispatch<any>) => {
-    return fetch(`/api/v1/users/${userId}`)
+    return fetch(`https://kat-h6-library.herokuapp.com/api/v1/users/${userId}`)
       .then((resp) => resp.json())
       .then((user) => dispatch(logIn(user)))
   }
