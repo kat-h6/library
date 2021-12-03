@@ -1,0 +1,20 @@
+.navbar--blue {
+  background-color: #0e2633;
+  color: white;
+}
+
+.navbar__icon {
+  margin-right: 8px;
+}
+
+.navbar__link {
+  text-decoration: none;
+  margin-right: 16px;
+  color: #dee2e6;
+  transition: color 0.15s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}

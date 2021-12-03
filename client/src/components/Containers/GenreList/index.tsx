@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { retrieveFilteredBooks } from '../../redux/actions/book'
+import { retrieveFilteredBooks } from '../../../redux/actions/book'
 
 import './GenreList.scss'
 

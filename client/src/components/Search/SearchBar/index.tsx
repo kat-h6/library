@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import './SearchBar.scss'
-import { retrieveFilteredBooks } from '../../redux/actions/book'
+import { retrieveFilteredBooks } from '../../../redux/actions/book'
 
 const options = [
   { value: 'title', label: 'Title' },

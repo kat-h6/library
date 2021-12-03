@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Container, Row, Col } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { AppState } from '../../types/types'
+import { AppState } from '../../../types/types'
 import './BookGrid.scss'
 
 export default function BookGrid() {

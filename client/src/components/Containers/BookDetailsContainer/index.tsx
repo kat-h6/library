@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-import { retrieveFilteredBooks } from '../../redux/actions/book'
-import { Book } from '../../types/book'
-import BookingButton from '../BookingButton'
+import { retrieveFilteredBooks } from '../../../redux/actions/book'
+import { Book } from '../../../types/book'
+import BookingButton from '../../Navigating/BookingButton'
 import './BookDetailsContainer.scss'
 
 type BookDetailsProps = {

@@ -1,15 +1,16 @@
 import React from 'react'
 import { GoogleLogin } from 'react-google-login'
-import { Navbar, Container, Nav, Button } from 'react-bootstrap'
+import { Navbar, Container, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
-import { getUser, logOut } from '../../redux/actions/user'
-import { AppState } from '../../types/types'
-import Search from '../SearchBar/index'
+import { getUser, logOut } from '../../../redux/actions/user'
+import { AppState } from '../../../types/types'
+import Search from '../../Search/SearchBar/index'
 import './NavBar.scss'
 
 export default function NavBar() {
@@ -30,11 +31,10 @@ export default function NavBar() {
   if (user) {
     console.log(user)
     button = <Button onClick={() => dispatch(logOut())}>Logout</Button>
-    let url = `localhost:3000/dashboard/${user._id}`
     link = (
-      <Nav.Link href={url} className="navbar__link">
+      <Link to="/dashboard/{user._id}" className="navbar__link">
         Dashboard
-      </Nav.Link>
+      </Link>
     )
   } else {
     button = (

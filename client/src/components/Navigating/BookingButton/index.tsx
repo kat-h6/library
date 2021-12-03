@@ -2,10 +2,10 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { AppState } from '../../types/types'
+import { AppState } from '../../../types/types'
 import axios from 'axios'
 
-import { User } from '../../types/user'
+import { User } from '../../../types/user'
 
 export default function BookingButton() {
   const navigate = useNavigate()

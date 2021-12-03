@@ -1,7 +1,7 @@
 import React from 'react'
 
-import NavBar from '../components/NavBar'
-import SearchResults from '../components/SearchResults'
+import NavBar from '../components/Navigating/NavBar'
+import SearchResults from '../components/Search/SearchResults'
 
 export default function BookDetails() {
   return (

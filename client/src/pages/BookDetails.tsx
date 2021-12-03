@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { AppState } from '../types/types'
 import { retrieveBook } from '../redux/actions/book'
-import NavBar from '../components/NavBar'
-import BookDetailsContainer from '../components/BookDetailsContainer'
+import NavBar from '../components/Navigating/NavBar'
+import BookDetailsContainer from '../components/Containers/BookDetailsContainer'
 
 export default function BookDetails() {
   const { bookId } = useParams()

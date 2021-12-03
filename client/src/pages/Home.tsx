@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { retrieveBooks } from '../redux/actions/book'
-import NavBar from '../components/NavBar/index'
-import BookGrid from '../components/BookGrid/index'
+import NavBar from '../components/Navigating/NavBar/index'
+import BookGrid from '../components/Containers/BookGrid/index'
 import Banner from '../components/Banner/index'
-import GenreList from '../components/GenreList/index'
+import GenreList from '../components/Containers/GenreList/index'
 import { AppState } from '../types/types'
 
 export default function Home() {

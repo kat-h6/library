@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { AppState } from '../../types/types'
+import { AppState } from '../../../types/types'
 import './SearchResults.scss'
 
 export default function SearchResults() {

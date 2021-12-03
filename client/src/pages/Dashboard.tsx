@@ -2,8 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { AppState } from '../types/types'
-import NavBar from '../components/NavBar'
-import BookingList from '../components/BookingsList'
+import NavBar from '../components/Navigating/NavBar'
+import BookingList from '../components/Containers/BookingsList'
 
 export default function Dashboard() {
   const user = useSelector((state: AppState) => state.user.user)
@@ -15,7 +15,6 @@ export default function Dashboard() {
       <NavBar />
       {user ? (
         <>
-          <h1>My Loans</h1>
           <BookingList bookings={user.bookings} />
         </>
       ) : (
