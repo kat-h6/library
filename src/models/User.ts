@@ -12,7 +12,7 @@ export type UserDocument = Document & {
 export type Bookings = {
   startDate: Date
   endDate: Date
-  books: string
+  book: string
   _id?: string
 }
 
