@@ -19,7 +19,7 @@ export default function NavBar() {
 
   const responseGoogle = async (response: any) => {
     let res = await axios.post(
-      'http://localhost:5000/api/v1/users/google-authenticate',
+      'https://kat-h6-library.herokuapp.com/api/v1/users/google-authenticate',
       { id_token: response.tokenObj.id_token }
     )
     console.log(res.data.id)
