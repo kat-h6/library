@@ -21,15 +21,15 @@ export default function GenreList() {
   }
 
   return (
-    <Container className="genres container--margin">
-      <h2 className="container__header">Browse Trending Genres</h2>
+    <Container className="genres genres-container--margin">
+      <h2 className="container__header">Trending Genres</h2>
       <ul className="genres__list">
-        <li className="genres__item item--border">
+        <li className="genres__item">
           <Link to="/books/search" onClick={() => searchGenre('fantasy')}>
             Fantasy
           </Link>
         </li>
-        <li className="genres__item item--border">
+        <li className="genres__item">
           <Link
             to="/books/search"
             onClick={() => searchGenre("children's literature")}
@@ -37,7 +37,7 @@ export default function GenreList() {
             Children's Literature
           </Link>
         </li>
-        <li className="genres__item item--border">
+        <li className="genres__item">
           <Link
             to="/books/search"
             onClick={() => searchGenre('science fiction')}
@@ -45,7 +45,7 @@ export default function GenreList() {
             Science Fiction
           </Link>
         </li>
-        <li className="genres__item item--border">
+        <li className="genres__item">
           <Link
             to="/books/search"
             onClick={() => searchGenre('dystopian fiction')}
@@ -53,7 +53,7 @@ export default function GenreList() {
             Dystopian Fiction
           </Link>
         </li>
-        <li className="genres__item item--border">
+        <li className="genres__item">
           <Link to="/books/search" onClick={() => searchGenre('thriller')}>
             Thriller
           </Link>

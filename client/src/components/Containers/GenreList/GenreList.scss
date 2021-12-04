@@ -1,5 +1,5 @@
-.container--margin {
-  margin-top: 48px;
+.genres-container--margin {
+  margin-top: 80px !important;
   margin-bottom: 48px;
 }
 
@@ -11,6 +11,12 @@
     margin-top: 48px;
     margin-bottom: 48px;
   }
+}
+
+.genres {
+  background-color: #f8f4e7;
+  padding: 20px 40px;
+  margin-top: 40px;
 }
 
 .genres__list {
@@ -26,12 +32,26 @@
   text-align: center;
 
   a {
+    position: relative;
     text-decoration: none;
     color: #0e2633;
     font-weight: bold;
-  }
-}
+    padding-bottom: 8px;
+    transition: border-bottom 0.2s ease;
 
-.item--border {
-  border-right: 2px solid #0e2633;
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: #0e2633;
+      height: 2px;
+      width: 0;
+      left: 0;
+      bottom: 0;
+      transition: 0.3s;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+  }
 }

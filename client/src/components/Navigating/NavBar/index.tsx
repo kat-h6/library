@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { getUser, logOut } from '../../../redux/actions/user'
 import { AppState } from '../../../types/types'
@@ -55,10 +56,15 @@ export default function NavBar() {
           <FontAwesomeIcon icon={faBookOpen} className="navbar__icon" />
           The Little Local Library
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav">
+          <FontAwesomeIcon icon={faSearch} className="navbar__icon" />
+        </Navbar.Toggle>
         <Navbar.Collapse id="navbarScroll">
           <Search />
         </Navbar.Collapse>
+        <Link to="/books" className="navbar__link">
+          Browse
+        </Link>
         {link}
         {button}
       </Container>
