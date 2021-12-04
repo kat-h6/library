@@ -9,12 +9,14 @@ import Product from './pages/Product'
 import BookDetails from './pages/BookDetails'
 import Search from './pages/Search'
 import Dashboard from './pages/Dashboard'
+import Books from './pages/Books'
 
 const Routes = () => (
   <Switch>
     <Route path="/" element={<Home />} />
     <Route path="/books/:bookId" element={<BookDetails />} />
     <Route path="/products/:id" element={<Product />} />
+    <Route path="/books" element={<Books />} />
     <Route path="/books/search" element={<Search />} />
     <Route path="/dashboard/:userId" element={<Dashboard />} />
   </Switch>
