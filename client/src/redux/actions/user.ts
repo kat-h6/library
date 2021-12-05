@@ -36,6 +36,6 @@ export function getUser(userId: string) {
 //   return (dispatch: Dispatch<any>) => {
 //     return fetch(`https://kat-h6-library.herokuapp.com/api/v1/users/${userId}`)
 //       .then((resp) => resp.json())
-//       .then((user) => logIn(user))
+//       .then((user) => dispatch(logIn(user)))
 //   }
 // }
