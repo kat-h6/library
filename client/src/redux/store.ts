@@ -31,13 +31,40 @@ export default function makeStore(initialState = initState) {
     }
   }
 
-  const savedState = localStorage.getItem('state')
-  if (savedState) initialState = JSON.parse(savedState)
+  const loadState = () => {
+    try {
+      const serializedState = localStorage.getItem('state')
+
+      if (serializedState === null) {
+        return undefined
+      }
+
+      return JSON.parse(serializedState)
+    } catch (err) {
+      return undefined
+    }
+  }
+
+  const saveState = (state: any) => {
+    try {
+      const serializedState = JSON.stringify(state)
+      localStorage.setItem('state', serializedState)
+    } catch (err) {
+      return undefined
+    }
+  }
+
+  const savedState = loadState()
+  if (savedState) initialState = savedState
   const store = createStore(
     createRootReducer(),
     initialState,
     composeEnhancers(applyMiddleware(...middlewares))
   )
+
+  store.subscribe(() => {
+    saveState(store.getState())
+  })
 
   sagaMiddleware.run(rootSaga)
 

@@ -1,13 +1,15 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from '../../../types/types'
 import axios from 'axios'
 
 import { User } from '../../../types/user'
+import { getUser } from '../../../redux/actions/user'
 
 export default function BookingButton() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const user = useSelector((state: AppState) => state.user.user)
   const { bookId } = useParams()
@@ -20,7 +22,6 @@ export default function BookingButton() {
       startDate: startDate,
       endDate: endDate,
     }
-
     return await axios.patch(
       `/api/v1/users/${user.id}/bookings`,
       bookingDetails
@@ -29,7 +30,14 @@ export default function BookingButton() {
 
   const makeBookUnavailable = async (bookId: string) => {
     const availability = { isAvailable: false }
-    return await axios.patch(`/api/v1/books/${bookId}`, availability)
+    return await axios.patch(
+      `https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}`,
+      availability
+    )
+  }
+
+  const getUserAgain = async (userId: string) => {
+    return dispatch(getUser(userId))
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -45,7 +53,10 @@ export default function BookingButton() {
       console.log('loan was made')
       makeBookUnavailable(bookId)
       console.log('book unavailable')
-      navigate(`/dashboard/${user.id}`)
+      console.log(user)
+      getUserAgain(user.id)
+      console.log(user)
+      navigate(`/dashboard/${user._id}`)
     }
   }
 

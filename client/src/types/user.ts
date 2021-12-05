@@ -3,6 +3,7 @@ import { Book } from './book'
 export const LOG_IN = 'LOG_IN'
 export const LOG_OUT = 'LOG_OUT'
 export const CREATE_BOOKING = 'CREATE_BOOKING'
+export const DELETE_BOOKING = 'DELETE_BOOKING'
 
 export type Booking = {
   _id?: string
@@ -12,7 +13,7 @@ export type Booking = {
 }
 
 export type User = {
-  _id?: string
+  _id: string
   id: string
   firstName: string
   lastName: string
