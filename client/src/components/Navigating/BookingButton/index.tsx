@@ -24,7 +24,7 @@ export default function BookingButton() {
       endDate: endDate,
     }
     return await axios.patch(
-      `https://kat-h6-library.herokuapp.com/api/v1/users/${user.id}/bookings`,
+      `https://kat-h6-library.herokuapp.com/api/v1/users/${user._id}/bookings`,
       bookingDetails
     )
   }
@@ -55,8 +55,7 @@ export default function BookingButton() {
       makeBookUnavailable(bookId)
       console.log('book unavailable')
       console.log(user)
-      getUserAgain(user.id)
-      console.log(user)
+      getUserAgain(user._id)
       navigate(`/dashboard/${user._id}`)
     }
   }

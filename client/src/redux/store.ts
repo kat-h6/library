@@ -12,7 +12,6 @@ const initState: AppState = {
   },
   books: {
     books: [],
-    selectedBook: null,
     filteredBooks: [],
   },
   user: {
