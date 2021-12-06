@@ -7,6 +7,7 @@ import { retrieveBook } from '../redux/actions/book'
 import NavBar from '../components/Navigating/NavBar'
 import BookDetailsContainer from '../components/Containers/BookDetailsContainer'
 import BookRatings from '../components/Containers/BookRatings'
+import Footer from '../components/Navigating/Footer'
 
 export default function BookDetails() {
   const { bookId } = useParams()
@@ -26,6 +27,7 @@ export default function BookDetails() {
       <NavBar />
       <BookDetailsContainer book={book} />
       <BookRatings book={book} />
+      <Footer />
     </>
   )
 }

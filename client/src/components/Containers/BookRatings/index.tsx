@@ -13,7 +13,7 @@ export default function BookRatings({ book }: BookDetailsProps) {
   return (
     <Container className="reviews">
       <h4 className="reviews__header">Reviews</h4>
-      {book.ratings ? (
+      {book.ratings.length > 0 ? (
         book.ratings.map((rating) => (
           <Review key={rating.author} rating={rating} />
         ))
