@@ -24,7 +24,7 @@ export default function BookingButton() {
       endDate: endDate,
     }
     return await axios.patch(
-      `/api/v1/users/${user.id}/bookings`,
+      `https://kat-h6-library.herokuapp.com/api/v1/users/${user.id}/bookings`,
       bookingDetails
     )
   }
