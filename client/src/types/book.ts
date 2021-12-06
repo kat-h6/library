@@ -7,6 +7,14 @@ export type Author = {
   author: string
 }
 
+export type Rating = {
+  title: string
+  content: string
+  rating: number
+  author: string
+  date: Date
+}
+
 export type Book = {
   _id: string
   title: string
@@ -18,6 +26,7 @@ export type Book = {
   genres: string[]
   isAvailable: boolean
   imageUrl: string
+  ratings: Rating[]
 }
 
 type Query = {
