@@ -8,6 +8,7 @@ import {
   findAll,
   updateBook,
   filterBooks,
+  addRating,
 } from '../controllers/book'
 
 const router = express.Router()
@@ -23,5 +24,6 @@ router.delete(
 )
 router.post('/', passport.authenticate('jwt', { session: false }), createBook)
 router.get('/search', filterBooks)
+router.patch('/:bookId/ratings', addRating)
 
 export default router

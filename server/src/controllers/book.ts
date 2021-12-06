@@ -22,6 +22,7 @@ export const createBook = async (
       isAvailable,
       bookings,
       imageUrl,
+      ratings,
     } = req.body
 
     const book = new Book({
@@ -35,6 +36,7 @@ export const createBook = async (
       isAvailable,
       bookings,
       imageUrl,
+      ratings,
     })
 
     await BookService.create(book)
@@ -86,7 +88,24 @@ export const deleteBook = async (
   }
 }
 
-// GET /movies/:movieId
+export const addRating = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const bookId = req.params.bookId
+    res.json(await BookService.addRating(req.body, bookId))
+  } catch (error) {
+    if (error instanceof Error && error.name == 'ValidationError') {
+      next(new BadRequestError('Invalid Request', error))
+    } else {
+      next(error)
+    }
+  }
+}
+
+// GET /books/:bookId
 export const findById = async (
   req: Request,
   res: Response,
