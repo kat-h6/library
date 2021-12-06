@@ -6,7 +6,7 @@
 
   &__date {
     align-self: center;
-    margin-left: 16px;
+    margin-left: 8px;
     opacity: 0.7;
   }
 }
@@ -25,4 +25,8 @@
 
 .review {
   padding-bottom: 24px;
+}
+
+.review__author {
+  margin-left: 8px;
 }

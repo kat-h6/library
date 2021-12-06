@@ -11,6 +11,24 @@
   justify-content: center;
 }
 
+.display-flex {
+  display: flex;
+}
+
+.star-rating {
+  margin-left: 16px;
+  display: flex;
+}
+
+.star {
+  margin-top: 4px;
+  color: #0e2633;
+}
+
+.rating-number {
+  margin-left: 8px;
+}
+
 .container--mb {
   margin-bottom: 48px;
 }

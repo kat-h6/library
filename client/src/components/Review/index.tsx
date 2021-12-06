@@ -15,9 +15,9 @@ export default function Review({ rating }: RatingProps) {
       <hr className="review__border" />
       <div className="review__details">
         {new Array(rating.rating).fill(null).map(() => (
-          <FontAwesomeIcon icon={faStar} className="navbar__icon" />
+          <FontAwesomeIcon icon={faStar} />
         ))}
-        <b>{rating.author}</b>
+        <b className="review__author">{rating.author}</b>
         <small className="review__details__date">
           {rating.date.toString()}
         </small>

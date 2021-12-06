@@ -2,6 +2,8 @@ import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 import { retrieveFilteredBooks } from '../../../redux/actions/book'
 import { Book } from '../../../types/book'
@@ -28,6 +30,14 @@ export default function BookDetailsContainer({ book }: BookDetailsProps) {
     navigate('/books/search')
   }
 
+  let rating = 0
+
+  for (let i = 0; i < book.ratings.length; i++) {
+    rating += book.ratings[i].rating
+  }
+
+  const numberOfStars = Math.ceil(rating / book.ratings.length)
+
   return (
     <Container className="container--margin">
       <Row>
@@ -36,7 +46,19 @@ export default function BookDetailsContainer({ book }: BookDetailsProps) {
         </Col>
         <Col md className="container__book-detail container--mb">
           <h2 className="container__header--blue">{book.title}</h2>
-          <p>by {book.authors.map((author) => author.name)}</p>
+          <div className="display-flex">
+            <p>by {book.authors.map((author) => author.name)}</p>
+            <div className="star-rating">
+              {book.ratings.length > 0 ? (
+                new Array(numberOfStars)
+                  .fill(null)
+                  .map(() => <FontAwesomeIcon icon={faStar} className="star" />)
+              ) : (
+                <p>No reviews yet</p>
+              )}
+              <p className="rating-number">({book.ratings.length})</p>
+            </div>
+          </div>
           {book.genres.map((genre) => (
             <Button
               variant="outline-secondary"
