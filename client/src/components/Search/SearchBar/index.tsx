@@ -58,7 +58,7 @@ export default function SearchBar() {
           value={formik.values.search}
           className="form__input"
         />
-        <Button type="submit" variant="outline-success">
+        <Button type="submit" variant="outline-light">
           Search
         </Button>
       </Form>

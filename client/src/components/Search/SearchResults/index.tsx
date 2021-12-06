@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -27,9 +27,11 @@ export default function SearchResults() {
             </Col>
           ))}
         </Row>
-        <Link to="/" className="back-btn">
-          Back
-        </Link>
+        <Button variant="warning" className="back-btn">
+          <Link to="/" className="back-btn__link">
+            Back
+          </Link>
+        </Button>
       </Container>
     </>
   )

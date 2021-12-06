@@ -1,7 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 import { retrieveFilteredBooks } from '../../../redux/actions/book'
@@ -40,7 +39,7 @@ export default function BookDetailsContainer({ book }: BookDetailsProps) {
           <p>by {book.authors.map((author) => author.name)}</p>
           {book.genres.map((genre) => (
             <Button
-              variant="outline-success"
+              variant="outline-secondary"
               onClick={() => searchGenre(genre)}
               className="genre-btn"
             >
@@ -60,9 +59,6 @@ export default function BookDetailsContainer({ book }: BookDetailsProps) {
           <hr className="book-detail__border" />
           <div className="button-container">
             {book.isAvailable ? <BookingButton /> : <p>Currently on Loan</p>}
-            <Link to="/" className="book-detail__back-btn">
-              <Button variant="success">Back</Button>
-            </Link>
           </div>
         </Col>
       </Row>

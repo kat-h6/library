@@ -7,6 +7,7 @@ import axios from 'axios'
 
 import { User } from '../../../types/user'
 import { getUser } from '../../../redux/actions/user'
+import './BookingButton.scss'
 
 export default function BookingButton() {
   const dispatch = useDispatch()
@@ -62,7 +63,11 @@ export default function BookingButton() {
 
   return (
     <div>
-      <Button onClick={() => makeBookingRequest(user, bookId)}>
+      <Button
+        onClick={() => makeBookingRequest(user, bookId)}
+        variant="warning"
+        className="booking-btn"
+      >
         Borrow Book
       </Button>
     </div>

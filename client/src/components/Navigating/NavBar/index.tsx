@@ -31,7 +31,11 @@ export default function NavBar() {
   let link
   if (user) {
     console.log(user)
-    button = <Button onClick={() => dispatch(logOut())}>Logout</Button>
+    button = (
+      <Button onClick={() => dispatch(logOut())} variant="outline-warning">
+        Logout
+      </Button>
+    )
     link = (
       <Link to="/dashboard/{user._id}" className="navbar__link">
         Dashboard
