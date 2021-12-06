@@ -5,6 +5,14 @@ export type Authors = {
   author: string
 }
 
+export type Rating = {
+  title: string
+  content: string
+  author: string
+  rating: number
+  date: Date
+}
+
 export type BookDocument = Document & {
   title: string
   authors: Authors[]
@@ -15,6 +23,7 @@ export type BookDocument = Document & {
   genres: string[]
   isAvailable: boolean
   imageUrl: string
+  ratings: Rating[]
 }
 
 const bookSchema = new mongoose.Schema({
@@ -26,6 +35,15 @@ const bookSchema = new mongoose.Schema({
     {
       author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
       name: { type: String, required: true },
+    },
+  ],
+  ratings: [
+    {
+      title: { type: String, required: true },
+      content: { type: String, required: true },
+      rating: { type: Number, required: true },
+      date: { type: Date, required: true },
+      author: { type: String, required: true },
     },
   ],
   description: { type: String },

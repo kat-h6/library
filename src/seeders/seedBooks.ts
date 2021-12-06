@@ -44,6 +44,7 @@ const books = [
     publishedYear: 1991,
     genres: ['science fiction', 'tragedy', 'dystopia'],
     isAvailable: true,
+    ratings: []
   }),
   new Book({
     title: 'Oryx and Crake',
@@ -56,6 +57,7 @@ const books = [
     publishedYear: 2004,
     genres: ['science fiction', 'tragedy', 'romance', 'dystopia'],
     isAvailable: true,
+    ratings: []
   }),
   new Book({
     title: 'Harry Potter and the Philosopher\'s Stone',
@@ -68,6 +70,7 @@ const books = [
     publishedYear: 2010,
     genres: ['fantasy fiction', 'fantasy', 'fiction'],
     isAvailable: true,
+    ratings: []
   }),
   new Book({
     title: 'Alice\'s Adventures in Wonderland',
@@ -78,7 +81,8 @@ const books = [
     publishedYear: 1931,
     publisher: 'Collins\' Clear-Type Press',
     ISBN: 8533609159,
-    imageUrl: 'https://covers.openlibrary.org/b/isbn/8533609159-M.jpg'
+    imageUrl: 'https://covers.openlibrary.org/b/isbn/8533609159-M.jpg',
+    ratings: []
   }), 
   new Book({
     title: 'The Hobbit',
@@ -89,7 +93,8 @@ const books = [
     publishedYear: 1984,
     publisher: 'Unwin Paperbacks',
     ISBN: 9780048231888,
-    imageUrl: 'https://covers.openlibrary.org/b/isbn/9780048231888-M.jpg'
+    imageUrl: 'https://covers.openlibrary.org/b/isbn/9780048231888-M.jpg',
+    ratings: []
   }),
   new Book({
     title: 'Nineteen Eighty-Four',
@@ -100,6 +105,7 @@ const books = [
     publisher: 'Secker & Warburg',
     ISBN: 9780241436523,
     imageUrl: 'https://covers.openlibrary.org/b/id/9267242-M.jpg',
+    ratings: []
   }),
   new Book({
     title: 'Le Petit Prince',
@@ -109,7 +115,8 @@ const books = [
     ISBN: 978314964079,
     publishedYear: 1943,
     publisher: 'Gallimard',
-    description: 'Le Petit Prince est une œuvre de langue française, la plus connue d\'Antoine de Saint-Exupéry. Publié en 1943 à New York simultanément à sa traduction anglaise, c\'est une œuvre poétique et philosophique sous l\'apparence d\'un conte pour enfants. \bTraduit en quatre cent cinquante-sept langues et dialectes, Le Petit Prince est le deuxième ouvrage le plus traduit au monde après la Bible. \bLe langage, simple et dépouillé, parce qu\'il est destiné à être compris par des enfants, est en réalité pour le narrateur le véhicule privilégié d\'une conception symbolique de la vie. Chaque chapitre relate une rencontre du petit prince qui laisse celui-ci perplexe, par rapport aux comportements absurdes des « grandes personnes ». Ces différentes rencontres peuvent être lues comme une allégorie.'
+    description: 'Le Petit Prince est une œuvre de langue française, la plus connue d\'Antoine de Saint-Exupéry. Publié en 1943 à New York simultanément à sa traduction anglaise, c\'est une œuvre poétique et philosophique sous l\'apparence d\'un conte pour enfants. \bTraduit en quatre cent cinquante-sept langues et dialectes, Le Petit Prince est le deuxième ouvrage le plus traduit au monde après la Bible. \bLe langage, simple et dépouillé, parce qu\'il est destiné à être compris par des enfants, est en réalité pour le narrateur le véhicule privilégié d\'une conception symbolique de la vie. Chaque chapitre relate une rencontre du petit prince qui laisse celui-ci perplexe, par rapport aux comportements absurdes des « grandes personnes ». Ces différentes rencontres peuvent être lues comme une allégorie.',
+    ratings: []
   }),
   new Book({
     title: 'The Three-Body Problem',
@@ -119,7 +126,8 @@ const books = [
     publisher: 'Tor Books',
     genres: ['science fiction'],
     ISBN: 9780765377067,
-    imageUrl: 'https://covers.openlibrary.org/b/isbn/9780765377067-M.jpg'
+    imageUrl: 'https://covers.openlibrary.org/b/isbn/9780765377067-M.jpg',
+    ratings: []
   }),
   new Book({
     title: 'The Witches',
@@ -129,7 +137,8 @@ const books = [
     ISBN: 9780590032490,
     imageUrl: 'https://covers.openlibrary.org/b/isbn/9780590032490-M.jpg',
     description: 'A young boy and his Norwegian grandmother, who is an expert on witches, together foil a witches\' plot to destroy the world\'s children by turning them into mice.',
-    genres: ['children\'s literature', 'fiction', 'fantasy']
+    genres: ['children\'s literature', 'fiction', 'fantasy'],
+    ratings: []
   }),
   new Book({
     title: 'Things Fall Apart',
@@ -139,7 +148,8 @@ const books = [
     imageUrl: 'https://covers.openlibrary.org/b/isbn/9780385474542-M.jpg',
     publishedYear: 1958,
     publisher: 'Anchor Books',
-    genres: ['historical fiction']
+    genres: ['historical fiction'],
+    ratings: []
   }),
   new Book({
     title: 'Who Wants a Cheap Rhinoceros?',
@@ -149,7 +159,8 @@ const books = [
     publisher: 'Simon & Schuster Books for Young Readers',
     publishYear: 2009,
     description: 'Looking ofr a new pet? Bored with cats, dogs, goldfish, gerbils, and hamsters? How about a cheap rhinoceros?',
-    genres: ['children\'s literature', 'fiction', 'humour']
+    genres: ['children\'s literature', 'fiction', 'humour'],
+    ratings:[]
   }),
   new Book({
     title: 'Pigs',
@@ -158,7 +169,8 @@ const books = [
     imageUrl: 'https://covers.openlibrary.org/b/isbn/9781550370393-M.jpg',
     publisher: 'Annick Press',
     publishedYear: 1992,
-    genres: ['children\'s literature', 'humour', 'fiction']
+    genres: ['children\'s literature', 'humour', 'fiction'],
+    ratings: []
   }),
   new Book({
     title: 'Catch-22',
@@ -168,7 +180,8 @@ const books = [
     publishedYear: 2011,
     ISBN: 9781451626650,
     imageUrl: 'https://covers.openlibrary.org/b/isbn/9781451626650-M.jpg',
-    genres: ['novel', 'war story', 'dark comedy', 'historical fiction', 'satire', 'absurdist fiction']
+    genres: ['novel', 'war story', 'dark comedy', 'historical fiction', 'satire', 'absurdist fiction'],
+    ratings: []
   }),
   new Book({
     title: 'The Lions of Al-Rassan',
@@ -178,7 +191,8 @@ const books = [
     publishedYear: 2000,
     ISBN: 9780006480303,
     imageUrl: 'https://covers.openlibrary.org/b/isbn/9780006480303-M.jpg',
-    genres: ['novel', 'fantasy fiction', 'historical fantasy']
+    genres: ['novel', 'fantasy fiction', 'historical fantasy'],
+    ratings: []
   }),
   new Book({
     title: 'Gone Girl',
@@ -188,7 +202,8 @@ const books = [
     imageUrl: 'https://covers.openlibrary.org/b/isbn/9781594136054-M.jpg',
     publisher: 'Large Print Press',
     publishedYear: 2014,
-    genres: ['thriller', 'mystery', 'drama']
+    genres: ['thriller', 'mystery', 'drama'],
+    ratings: []
   })
 ]
 

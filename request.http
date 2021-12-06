@@ -29,11 +29,11 @@ content-type: application/json
 
 ###
 
-PATCH http://localhost:5000/api/v1/books/61a223399c58b9aebe7120fd HTTP/1.1
+PATCH http://localhost:5000/api/v1/books/61a223399c58b9aebe712115 HTTP/1.1
 content-type: application/json
 
 {
-  "isAvailable": false
+  "isAvailable": true
 }
 
 
@@ -64,17 +64,6 @@ GET http://localhost:5000/api/v1/users/61a49c021e69081033f1a351
 DELETE http://localhost:5000/api/v1/users/618d61250b8c182b14b1add4 HTTP/1.1
 
 
-####
-POST http://localhost:5000/api/v1/bookings HTTP/1.1
-content-type: application/json
-
-{
-  "user": "618e74d0fad48c5a69c4c949",
-  "book": "618e74e0fad48c5a69c4c94b",
-  "startDate": "November 10, 2021 03:24:00",
-  "endDate": "December 1, 2021 03:24:00"
-}
-
 ###
 GET http://localhost:5000/api/v1/bookings 
 
@@ -94,4 +83,20 @@ content-type: application/json
 }
 
 ###
+
+
+PATCH http://localhost:5000/api/v1/books/61adf15c3c6095fa0a67f691/ratings HTTP/1.1
+content-type: application/json 
+
+{
+  "title": "Must read!",
+  "date" : "December 1, 2021 03:24:00",
+  "content": "chilling read, highly recommended",
+  "author": "Kate",
+  "rating": "5"
+}
+###
 DELETE http://localhost:5000/api/v1/users/61a49c021e69081033f1a351/bookings/61a4a81f54aa76182032b2be HTTP/1.1
+
+###
+DELETE http://localhost:5000/api/v1/users/61a49c021e69081033f1a351/bookings/61a4e6d7257adc23ad6e70d4 HTTP/1.1

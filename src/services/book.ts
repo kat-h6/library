@@ -1,4 +1,4 @@
-import Book, { BookDocument } from '../models/Book'
+import Book, { BookDocument, Rating } from '../models/Book'
 import { NotFoundError } from '../helpers/apiError'
 
 type Query = {
@@ -71,6 +71,18 @@ const deleteBook = async (bookId: string): Promise<BookDocument | null> => {
   return foundBook
 }
 
+const addRating = async (ratingDetails: Rating, bookId: string) => {
+  const foundBook = await Book.findById(bookId)
+
+  if (!foundBook) {
+    throw new NotFoundError(`Book ${bookId} not found`)
+  }
+
+  foundBook.ratings.push(ratingDetails)
+
+  return foundBook.save()
+}
+
 export default {
   create,
   findById,
@@ -78,4 +90,5 @@ export default {
   filterBooks,
   update,
   deleteBook,
+  addRating,
 }
