@@ -7,6 +7,7 @@ import BookGrid from '../components/Containers/BookGrid/index'
 import Banner from '../components/Banner/index'
 import GenreList from '../components/Containers/GenreList/index'
 import BookClubContainer from '../components/Containers/BookClubContainer'
+import Footer from '../components/Navigating/Footer'
 
 export default function Home() {
   const dispatch = useDispatch()
@@ -22,6 +23,7 @@ export default function Home() {
       <BookGrid />
       <GenreList />
       <BookClubContainer />
+      <Footer />
     </>
   )
 }
