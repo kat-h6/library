@@ -1,5 +1,5 @@
 import { Dispatch } from 'react'
-import { LogIn, LogOut, LOG_IN, LOG_OUT, User } from '../../types/user'
+import { LogIn, LogOut, LOG_IN, LOG_OUT } from '../../types/user'
 
 export function logIn(res: any): LogIn {
   return {
@@ -16,19 +16,11 @@ export function logOut(): LogOut {
   }
 }
 
-export function setUser(user: User) {
-  return (dispatch: Dispatch<any>) => {
-    console.log(user)
-    localStorage.setItem('state', JSON.stringify(user))
-    return dispatch(logIn(user))
-  }
-}
-
 export function getUser(userId: string) {
   return (dispatch: Dispatch<any>) => {
     return fetch(`https://kat-h6-library.herokuapp.com/api/v1/users/${userId}`)
       .then((resp) => resp.json())
-      .then((user) => dispatch(setUser(user)))
+      .then((user) => dispatch(logIn(user)))
   }
 }
 

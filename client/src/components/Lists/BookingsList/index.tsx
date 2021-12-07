@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -25,10 +25,7 @@ export default function BookingList(): JSX.Element {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  let bookings
-  if (user) {
-    bookings = user.bookings
-  }
+  const [bookings, setBookings] = useState(user?.bookings)
 
   const makeBookAvailable = async (bookId: string) => {
     const availability = { isAvailable: true }
@@ -46,7 +43,8 @@ export default function BookingList(): JSX.Element {
     console.log(user)
     await dispatch(getUser(user._id))
     await makeBookAvailable(booking.book._id)
-    console.log(user)
+    const bookingId = booking._id
+    setBookings(bookings?.filter((booking) => booking._id !== bookingId))
     return navigate(`/dashboard/${user._id}`)
   }
 

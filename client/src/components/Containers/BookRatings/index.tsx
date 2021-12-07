@@ -11,6 +11,8 @@ type BookDetailsProps = {
 }
 
 export default function BookRatings({ book }: BookDetailsProps) {
+  // const [reviews, setReviews] = useState(book.ratings)
+
   return (
     <Container className="reviews">
       <h4 className="reviews__header">Reviews</h4>
@@ -19,7 +21,7 @@ export default function BookRatings({ book }: BookDetailsProps) {
           <Review key={index} rating={rating} />
         ))
       ) : (
-        <p>No ratings yet</p>
+        <p>No reviews yet</p>
       )}
       <ReviewForm />
     </Container>

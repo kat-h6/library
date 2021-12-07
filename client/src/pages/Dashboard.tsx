@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap'
 
 import { AppState } from '../types/types'
 import NavBar from '../components/Navigating/NavBar'
-import BookingsList from '../components/Containers/BookingsList'
+import BookingsList from '../components/Lists/BookingsList'
 
 export default function Dashboard() {
   const user = useSelector((state: AppState) => state.user.user)

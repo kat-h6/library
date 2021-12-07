@@ -38,6 +38,7 @@ export default function BookingButton() {
   }
 
   const getUserAgain = async (userId: string) => {
+    console.log('I am triggered')
     return dispatch(getUser(userId))
   }
 
@@ -50,12 +51,12 @@ export default function BookingButton() {
       alert('Must be logged in')
     }
     if (user && bookId) {
-      loanRequest(user, bookId)
+      loanRequest(user, bookId).then((data) => getUserAgain(data.data._id))
       console.log('loan was made')
       makeBookUnavailable(bookId)
       console.log('book unavailable')
       console.log(user)
-      getUserAgain(user._id)
+      // getUserAgain(user._id)
       navigate(`/dashboard/${user._id}`)
     }
   }
