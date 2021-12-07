@@ -2,8 +2,7 @@ import { Book } from './book'
 
 export const LOG_IN = 'LOG_IN'
 export const LOG_OUT = 'LOG_OUT'
-export const CREATE_BOOKING = 'CREATE_BOOKING'
-export const DELETE_BOOKING = 'DELETE_BOOKING'
+export const REQUEST_LOAN = 'REQUEST_LOAN'
 
 export type Booking = {
   _id?: string
@@ -30,12 +29,16 @@ export type LogIn = {
   }
 }
 
-export type UserState = {
-  user: User | null
-}
-
 export type LogOut = {
   type: typeof LOG_OUT
+}
+
+export type RequestLoan = {
+  type: typeof REQUEST_LOAN
+}
+
+export type UserState = {
+  user: User | null
 }
 
 export type UserActions = LogIn | LogOut
