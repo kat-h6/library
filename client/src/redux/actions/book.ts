@@ -7,6 +7,8 @@ import {
   Values,
   FilterBooks,
   FILTER_BOOKS,
+  SelectBook,
+  SELECT_BOOK,
 } from '../../types/book'
 
 export function fetchAllBooks(books: Book[]): FetchAllBooks {
@@ -23,6 +25,15 @@ export function filterBooks(books: Book[]): FilterBooks {
     type: FILTER_BOOKS,
     payload: {
       books: books,
+    },
+  }
+}
+
+export function selectBook(book: Book): SelectBook {
+  return {
+    type: SELECT_BOOK,
+    payload: {
+      book: book,
     },
   }
 }
@@ -44,5 +55,13 @@ export function retrieveBooks() {
     return fetch('https://kat-h6-library.herokuapp.com/api/v1/books')
       .then((resp) => resp.json())
       .then((books) => dispatch(fetchAllBooks(books)))
+  }
+}
+
+export function getBook(bookId: string | undefined) {
+  return (dispatch: Dispatch<any>) => {
+    return fetch(`https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}`)
+      .then((resp) => resp.json())
+      .then((book) => dispatch(selectBook(book)))
   }
 }

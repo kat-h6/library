@@ -2,8 +2,8 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 
 import { Book } from '../../../types/book'
-import Review from '../../Review'
-import ReviewForm from '../../ReviewForm'
+import Review from '../Review'
+import ReviewForm from '../ReviewForm'
 import './BookRatings.scss'
 
 type BookDetailsProps = {

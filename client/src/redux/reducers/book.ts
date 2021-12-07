@@ -3,13 +3,15 @@ import {
   BookActions,
   FETCH_ALL_BOOKS,
   FILTER_BOOKS,
+  SELECT_BOOK,
 } from '../../types/book'
 
 //prettier-ignore
 export default function books(
   state: BookState = {
     books: [],
-    filteredBooks: []
+    filteredBooks: [],
+    selectedBook: null
   },
   action: BookActions
 ): BookState {
@@ -19,6 +21,9 @@ export default function books(
   }
   case FILTER_BOOKS: {
     return {...state, filteredBooks: action.payload.books}
+  }
+  case SELECT_BOOK: {
+    return {...state, selectedBook: action.payload.book}
   }
   default:
     return state

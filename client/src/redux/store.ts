@@ -13,6 +13,7 @@ const initState: AppState = {
   books: {
     books: [],
     filteredBooks: [],
+    selectedBook: null,
   },
   user: {
     user: null,
