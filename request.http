@@ -29,7 +29,7 @@ content-type: application/json
 
 ###
 
-PATCH http://localhost:5000/api/v1/books/61a223399c58b9aebe712115 HTTP/1.1
+PATCH https://kat-h6-library.herokuapp.com/api/v1/books/61adf15c3c6095fa0a67f697 HTTP/1.1
 content-type: application/json
 
 {
@@ -100,3 +100,17 @@ DELETE http://localhost:5000/api/v1/users/61a49c021e69081033f1a351/bookings/61a4
 
 ###
 DELETE http://localhost:5000/api/v1/users/61a49c021e69081033f1a351/bookings/61a4e6d7257adc23ad6e70d4 HTTP/1.1
+
+###
+DELETE https://kat-h6-library.herokuapp.com/api/v1/users/61a49c021e69081033f1a351/bookings/61ae577fa5feaa0022b654c0
+
+###
+PATCH https://kat-h6-library.herokuapp.com/api/v1/users/61a49c021e69081033f1a351
+content-type: application/json
+
+{
+  "isAdmin": "true"
+}
+
+### 
+GET http://localhost:5000/api/v1/search?title=harry
