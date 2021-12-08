@@ -4,10 +4,13 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 
 import './NewBookForm.scss'
-import { createBook } from '../../redux/actions/book'
+import { createBook, retrieveBooks } from '../../redux/actions/book'
+import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router'
 
 export default function NewBookForm() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -23,6 +26,10 @@ export default function NewBookForm() {
     },
     onSubmit: (values) => {
       dispatch(createBook(values))
+      dispatch(retrieveBooks())
+      Swal.fire('Success! Book added').then(function () {
+        navigate('/')
+      })
     },
   })
 

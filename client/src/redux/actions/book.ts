@@ -127,10 +127,8 @@ export function createBook(values: any) {
       isAvailable: true,
       authors: bookAuthorObjects,
       genres: bookGenres,
+      ISBN: values.ISBN,
     }
-    console.log(book)
-    return axios
-      .post('https://kat-h6-library.herokuapp.com/api/v1/books', book)
-      .then((data) => console.log(data))
+    return axios.post('https://kat-h6-library.herokuapp.com/api/v1/books', book)
   }
 }
