@@ -48,61 +48,69 @@ export default function ReviewForm() {
   })
 
   return (
-    <div className="review-form">
-      <h5>Write a review</h5>
-      <Form onSubmit={formik.handleSubmit}>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="title">Title</Form.Label>
-          <Form.Control
-            id="title"
-            placeholder={formik.values.title}
-            onChange={formik.handleChange}
-          />
-          {formik.errors.title ? (
-            <Form.Text className="text-muted">{formik.errors.title}</Form.Text>
-          ) : null}
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="author">Name</Form.Label>
-          <Form.Control
-            id="author"
-            placeholder={formik.values.author}
-            onChange={formik.handleChange}
-          />
-          {formik.errors.author ? (
-            <Form.Text className="text-muted">{formik.errors.author}</Form.Text>
-          ) : null}
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="rating">Rating</Form.Label>
-          <Form.Control
-            id="rating"
-            placeholder={formik.values.rating}
-            onChange={formik.handleChange}
-          />
-          {formik.errors.rating ? (
-            <Form.Text className="text-muted">{formik.errors.rating}</Form.Text>
-          ) : null}
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="content">Review</Form.Label>
-          <Form.Control
-            as="textarea"
-            id="content"
-            placeholder={formik.values.content}
-            onChange={formik.handleChange}
-            className="review__content"
-          />
-          {formik.errors.content ? (
-            <Form.Text className="text-muted">
-              {formik.errors.content}
-            </Form.Text>
-          ) : null}
-        </Form.Group>
-        <Button type="submit" variant="warning">
-          Submit review
-        </Button>
-      </Form>
+    <div className="review-d-flex">
+      <div className="review-form">
+        <h5>Write a review</h5>
+        <Form onSubmit={formik.handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="title">Title</Form.Label>
+            <Form.Control
+              id="title"
+              placeholder={formik.values.title}
+              onChange={formik.handleChange}
+            />
+            {formik.errors.title ? (
+              <Form.Text className="text-muted">
+                {formik.errors.title}
+              </Form.Text>
+            ) : null}
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="author">Name</Form.Label>
+            <Form.Control
+              id="author"
+              placeholder={formik.values.author}
+              onChange={formik.handleChange}
+            />
+            {formik.errors.author ? (
+              <Form.Text className="text-muted">
+                {formik.errors.author}
+              </Form.Text>
+            ) : null}
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="rating">Rating</Form.Label>
+            <Form.Control
+              id="rating"
+              placeholder={formik.values.rating}
+              onChange={formik.handleChange}
+            />
+            {formik.errors.rating ? (
+              <Form.Text className="text-muted">
+                {formik.errors.rating}
+              </Form.Text>
+            ) : null}
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="content">Review</Form.Label>
+            <Form.Control
+              as="textarea"
+              id="content"
+              placeholder={formik.values.content}
+              onChange={formik.handleChange}
+              className="review__content"
+            />
+            {formik.errors.content ? (
+              <Form.Text className="text-muted">
+                {formik.errors.content}
+              </Form.Text>
+            ) : null}
+          </Form.Group>
+          <Button type="submit" variant="warning">
+            Submit review
+          </Button>
+        </Form>
+      </div>
     </div>
   )
 }

@@ -1,11 +1,16 @@
 .review-form {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 48px;
   width: 500px;
-  border: 1px solid #c8c8c9;
   padding: 24px;
   border-radius: 8px;
 }
 
 .review__content {
   height: 100px;
+}
+
+.review-d-flex {
+  display: flex;
+  justify-content: center;
 }

@@ -19,7 +19,10 @@ export default function BookRatings({ book }: BookDetailsProps) {
           <Review key={index} rating={rating} />
         ))
       ) : (
-        <p>No reviews yet</p>
+        <div>
+          <hr className="review__border" />
+          <p>No reviews yet</p>
+        </div>
       )}
       <ReviewForm />
     </Container>
