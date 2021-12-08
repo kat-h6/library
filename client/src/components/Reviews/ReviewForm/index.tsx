@@ -4,27 +4,15 @@ import { Form, Button } from 'react-bootstrap'
 // import { useNavigate } from 'react-router'
 
 import './ReviewForm.scss'
-import axios from 'axios'
 import { useParams } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { submitReview } from '../../../redux/actions/book'
 
 export default function ReviewForm() {
   const { bookId } = useParams()
-
-  const submitReview = async (values: any) => {
-    const date = new Date()
-    const review = {
-      title: values.title,
-      content: values.content,
-      rating: values.rating,
-      date: date,
-    }
-    return await axios.patch(
-      `https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}/ratings`,
-      review
-    )
-  }
-
+  const dispatch = useDispatch()
   // const navigate = useNavigate()
+
   const formik = useFormik({
     initialValues: {
       title: 'Enter review title',
@@ -33,7 +21,7 @@ export default function ReviewForm() {
       content: 'Review content',
     },
     onSubmit: (values) => {
-      submitReview(values)
+      dispatch(submitReview(values, bookId))
       // navigate('/books/search')
     },
   })

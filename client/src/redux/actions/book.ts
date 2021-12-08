@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { Dispatch } from 'redux'
 
 import {
@@ -63,5 +64,24 @@ export function getBook(bookId: string | undefined) {
     return fetch(`https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}`)
       .then((resp) => resp.json())
       .then((book) => dispatch(selectBook(book)))
+  }
+}
+
+export function submitReview(values: any, bookId: string | undefined) {
+  return (dispatch: Dispatch<any>) => {
+    const date = new Date()
+    const review = {
+      author: values.author,
+      title: values.title,
+      content: values.content,
+      rating: values.rating,
+      date: date,
+    }
+    return axios
+      .patch(
+        `https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}/ratings`,
+        review
+      )
+      .then((data) => dispatch(getBook(data.data._id)))
   }
 }
