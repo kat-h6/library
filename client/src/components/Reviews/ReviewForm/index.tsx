@@ -50,7 +50,7 @@ export default function ReviewForm() {
   return (
     <div className="review-d-flex">
       <div className="review-form">
-        <h5>Write a review</h5>
+        <h5 className="review-form__header">Write a review</h5>
         <Form onSubmit={formik.handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="title">Title</Form.Label>

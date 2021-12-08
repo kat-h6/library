@@ -56,7 +56,7 @@ export default function BookingList(): JSX.Element {
             <p>Due: {booking.endDate.toString()}</p>
           </div>
           <div className="return-btn">
-            <Button variant="success" onClick={() => returnBook(booking, user)}>
+            <Button variant="warning" onClick={() => returnBook(booking, user)}>
               Return
             </Button>
           </div>
