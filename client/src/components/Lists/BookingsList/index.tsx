@@ -1,11 +1,10 @@
-import axios from 'axios'
 import React, { useState } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { makeBookAvailable } from '../../../redux/actions/book'
-import { getUser } from '../../../redux/actions/user'
 
+import { deleteBooking, makeBookAvailable } from '../../../redux/actions/book'
+import { getUser } from '../../../redux/actions/user'
 import { Book } from '../../../types/book'
 import { AppState } from '../../../types/types'
 import { User } from '../../../types/user'
@@ -18,9 +17,6 @@ type Booking = {
   endDate: Date
 }
 
-// type BookingListProps = {
-//   bookings?: Booking[]
-// }
 export default function BookingList(): JSX.Element {
   const user = useSelector((state: AppState) => state.user.user)
   const dispatch = useDispatch()
@@ -29,8 +25,7 @@ export default function BookingList(): JSX.Element {
   const [bookings, setBookings] = useState(user?.bookings)
 
   const returnBook = async (booking: Booking, user: User) => {
-    const url = `https://kat-h6-library.herokuapp.com/api/v1/users/${user._id}/bookings/${booking._id}`
-    await axios.delete(url)
+    dispatch(deleteBooking(booking._id, user._id))
     dispatch(getUser(user._id))
     dispatch(makeBookAvailable(booking.book._id))
     const bookingId = booking._id

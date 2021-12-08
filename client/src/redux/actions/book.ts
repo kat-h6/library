@@ -94,3 +94,13 @@ export function makeBookAvailable(bookId: string) {
     )
   }
 }
+
+export function deleteBooking(
+  bookingId: string | undefined,
+  userId: string | undefined
+) {
+  return (dispatch: Dispatch<any>) => {
+    const url = `https://kat-h6-library.herokuapp.com/api/v1/users/${userId}/bookings/${bookingId}`
+    return axios.delete(url)
+  }
+}
