@@ -21,7 +21,7 @@ export default function BookRatings({ book }: BookDetailsProps) {
       ) : (
         <div>
           <hr className="review__border" />
-          <p>No reviews yet</p>
+          <p className="text-muted">No reviews yet</p>
         </div>
       )}
       <ReviewForm />

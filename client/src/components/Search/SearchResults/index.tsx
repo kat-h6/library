@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -19,13 +19,17 @@ export default function SearchResults() {
       <Container className="search-results container--margin">
         <h2 className="container__header">{books.length} Search Results</h2>
         <Row>
-          {books.map((book) => (
-            <Col md key={book._id} className="margin-top">
-              <Link to={`/books/${book._id}`}>
+          <div className="search-results__books">
+            {books.map((book) => (
+              <Link
+                to={`/books/${book._id}`}
+                key={book._id}
+                className="search-results__book-margin"
+              >
                 <img src={book.imageUrl} alt="book cover" />
               </Link>
-            </Col>
-          ))}
+            ))}
+          </div>
         </Row>
         <Button variant="warning" className="back-btn">
           <Link to="/" className="back-btn__link">

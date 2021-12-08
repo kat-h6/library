@@ -59,8 +59,9 @@ export default function BookDetailsContainer({ book }: BookDetailsProps) {
               <p className="rating-number">({book.ratings.length})</p>
             </div>
           </div>
-          {book.genres.map((genre) => (
+          {book.genres.map((genre, index) => (
             <Button
+              key={index}
               variant="outline-secondary"
               onClick={() => searchGenre(genre)}
               className="genre-btn"

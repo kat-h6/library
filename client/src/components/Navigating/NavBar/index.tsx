@@ -29,7 +29,6 @@ export default function NavBar() {
   let button
   let link
   if (user) {
-    console.log(user)
     button = (
       <Button onClick={() => dispatch(logOut())} variant="outline-warning">
         Logout
