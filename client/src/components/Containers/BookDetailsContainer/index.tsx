@@ -1,14 +1,19 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
-import { retrieveFilteredBooks } from '../../../redux/actions/book'
+import {
+  retrieveFilteredBooks,
+  deleteThisBook,
+  retrieveBooks,
+} from '../../../redux/actions/book'
 import { Book } from '../../../types/book'
 import BookingButton from '../../Navigating/BookingButton'
 import './BookDetailsContainer.scss'
+import { AppState } from '../../../types/types'
 
 type BookDetailsProps = {
   book: Book
@@ -17,6 +22,7 @@ type BookDetailsProps = {
 export default function BookDetailsContainer({ book }: BookDetailsProps) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const user = useSelector((state: AppState) => state.user.user)
 
   const searchGenre = (genreName: string) => {
     const values = {
@@ -30,13 +36,19 @@ export default function BookDetailsContainer({ book }: BookDetailsProps) {
     navigate('/books/search')
   }
 
+  const deleteBook = (bookId: string | undefined) => {
+    dispatch(deleteThisBook(bookId))
+    dispatch(retrieveBooks())
+    navigate('/')
+  }
+
   let rating = 0
 
   for (let i = 0; i < book.ratings.length; i++) {
     rating += book.ratings[i].rating
   }
 
-  const numberOfStars = Math.ceil(rating / book.ratings.length)
+  const numberOfStars = Math.round(rating / book.ratings.length)
 
   return (
     <Container className="container--margin">
@@ -82,6 +94,15 @@ export default function BookDetailsContainer({ book }: BookDetailsProps) {
           <hr className="book-detail__border" />
           <div className="button-container">
             {book.isAvailable ? <BookingButton /> : <p>Currently on Loan</p>}
+            {user && user.isAdmin ? (
+              <Button
+                variant="danger"
+                onClick={() => deleteBook(book._id)}
+                className="action-btn"
+              >
+                Delete
+              </Button>
+            ) : null}
           </div>
         </Col>
       </Row>

@@ -132,3 +132,10 @@ export function createBook(values: any) {
     return axios.post('https://kat-h6-library.herokuapp.com/api/v1/books', book)
   }
 }
+
+export function deleteThisBook(bookId: string | undefined) {
+  return (dispatch: Dispatch<any>) => {
+    const url = `https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}`
+    return axios.delete(url)
+  }
+}

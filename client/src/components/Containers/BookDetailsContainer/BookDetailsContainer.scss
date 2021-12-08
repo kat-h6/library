@@ -59,9 +59,13 @@
 }
 
 .button-container {
-  display: grid;
+  display: flex;
 }
 
 .book-detail__back-btn {
   margin-left: 16px;
+}
+
+.action-btn {
+  margin-left: 24px;
 }
