@@ -1,0 +1,23 @@
+.book-form__description {
+  height: 100px;
+}
+
+.book-form {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  width: 500px;
+  padding: 32px;
+  border-radius: 8px;
+
+  &__header {
+    font-weight: bold;
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+.form-d-flex {
+  display: flex;
+  justify-content: center;
+}

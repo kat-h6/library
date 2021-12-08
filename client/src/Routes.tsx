@@ -10,6 +10,7 @@ import BookDetails from './pages/BookDetails'
 import Search from './pages/Search'
 import Dashboard from './pages/Dashboard'
 import Books from './pages/Books'
+import NewBook from './pages/NewBook'
 
 const Routes = () => (
   <Switch>
@@ -17,6 +18,7 @@ const Routes = () => (
     <Route path="/books/:bookId" element={<BookDetails />} />
     <Route path="/products/:id" element={<Product />} />
     <Route path="/books" element={<Books />} />
+    <Route path="/books/new" element={<NewBook />} />
     <Route path="/books/search" element={<Search />} />
     <Route path="/dashboard/:userId" element={<Dashboard />} />
   </Switch>

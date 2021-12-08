@@ -39,6 +39,8 @@ export function selectBook(book: Book): SelectBook {
   }
 }
 
+// Async action processed by redux-thunk middleware
+
 export function retrieveFilteredBooks(values: Values) {
   return (dispatch: Dispatch) => {
     return fetch(
@@ -49,7 +51,6 @@ export function retrieveFilteredBooks(values: Values) {
   }
 }
 
-// Async action processed by redux-thunk middleware
 export function retrieveBooks() {
   return (dispatch: Dispatch<any>) => {
     return fetch('https://kat-h6-library.herokuapp.com/api/v1/books')
@@ -102,5 +103,34 @@ export function deleteBooking(
   return (dispatch: Dispatch<any>) => {
     const url = `https://kat-h6-library.herokuapp.com/api/v1/users/${userId}/bookings/${bookingId}`
     return axios.delete(url)
+  }
+}
+
+export function createBook(values: any) {
+  return (dispatch: Dispatch<any>) => {
+    console.log(values)
+    const bookAuthors = values.authors.split(',')
+    const bookAuthorObjects = bookAuthors.map((author: string) => {
+      let authorObj = {
+        name: author,
+      }
+      return authorObj
+    })
+    const bookGenres = values.genres.split(',')
+    const book = {
+      title: values.title,
+      description: values.description,
+      imageUrl: values.imageUrl,
+      publishedYear: values.publishedYear,
+      publisher: values.publisher,
+      ratings: [],
+      isAvailable: true,
+      authors: bookAuthorObjects,
+      genres: bookGenres,
+    }
+    console.log(book)
+    return axios
+      .post('https://kat-h6-library.herokuapp.com/api/v1/books', book)
+      .then((data) => console.log(data))
   }
 }

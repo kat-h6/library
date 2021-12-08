@@ -20,6 +20,7 @@ export type User = {
   password?: string
   bookings?: Booking[]
   data?: any
+  isAdmin: Boolean
 }
 
 export type LogIn = {

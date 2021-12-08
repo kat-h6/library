@@ -28,6 +28,7 @@ export default function NavBar() {
 
   let button
   let link
+  let createBook
   if (user) {
     button = (
       <Button onClick={() => dispatch(logOut())} variant="outline-warning">
@@ -39,6 +40,13 @@ export default function NavBar() {
         Dashboard
       </Link>
     )
+    if (user.isAdmin) {
+      createBook = (
+        <Link to="/books/new" className="navbar__link">
+          New Book
+        </Link>
+      )
+    }
   } else {
     button = (
       <GoogleLogin
@@ -67,6 +75,7 @@ export default function NavBar() {
         <Link to="/books" className="navbar__link">
           Browse
         </Link>
+        {createBook}
         {link}
         {button}
       </Container>
