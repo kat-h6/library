@@ -13,7 +13,6 @@ export default function AllBooks() {
   const bookRows = rows.map((row, index) =>
     books.slice(index * 5, index * 5 + 5)
   )
-  console.log(bookRows)
   const content = bookRows.map((row, index) => (
     <Row key={index} className="book-row">
       {row.map((book: Book) => (

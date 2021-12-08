@@ -23,7 +23,6 @@ export default function NavBar() {
       'https://kat-h6-library.herokuapp.com/api/v1/users/google-authenticate',
       { id_token: response.tokenObj.id_token }
     )
-    console.log(res.data.id)
     dispatch(getUser(res.data.id))
   }
 

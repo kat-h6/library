@@ -1,17 +1,15 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import { Form, Button } from 'react-bootstrap'
-// import { useNavigate } from 'react-router'
-
-import './ReviewForm.scss'
 import { useParams } from 'react-router'
 import { useDispatch } from 'react-redux'
+
+import './ReviewForm.scss'
 import { submitReview } from '../../../redux/actions/book'
 
 export default function ReviewForm() {
   const { bookId } = useParams()
   const dispatch = useDispatch()
-  // const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -22,7 +20,6 @@ export default function ReviewForm() {
     },
     onSubmit: (values) => {
       dispatch(submitReview(values, bookId))
-      // navigate('/books/search')
     },
   })
 
@@ -58,7 +55,7 @@ export default function ReviewForm() {
           <Form.Label htmlFor="content">Review</Form.Label>
           <Form.Control
             as="textarea"
-            id="author"
+            id="content"
             placeholder={formik.values.content}
             onChange={formik.handleChange}
             className="review__content"

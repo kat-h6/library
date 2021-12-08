@@ -41,7 +41,6 @@ export function selectBook(book: Book): SelectBook {
 
 export function retrieveFilteredBooks(values: Values) {
   return (dispatch: Dispatch) => {
-    console.log(values)
     return fetch(
       `https://kat-h6-library.herokuapp.com/api/v1/search?${values.query.value}=${values.search}`
     )
@@ -83,5 +82,15 @@ export function submitReview(values: any, bookId: string | undefined) {
         review
       )
       .then((data) => dispatch(getBook(data.data._id)))
+  }
+}
+
+export function makeBookAvailable(bookId: string) {
+  return (dispatch: Dispatch<any>) => {
+    const availability = { isAvailable: true }
+    return axios.patch(
+      `https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}`,
+      availability
+    )
   }
 }

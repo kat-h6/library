@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { makeBookAvailable } from '../../../redux/actions/book'
 import { getUser } from '../../../redux/actions/user'
 
 import { Book } from '../../../types/book'
@@ -27,22 +28,11 @@ export default function BookingList(): JSX.Element {
 
   const [bookings, setBookings] = useState(user?.bookings)
 
-  const makeBookAvailable = async (bookId: string) => {
-    const availability = { isAvailable: true }
-    return await axios.patch(
-      `https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}`,
-      availability
-    )
-  }
-
   const returnBook = async (booking: Booking, user: User) => {
-    console.log(user._id)
-    console.log(booking._id)
     const url = `https://kat-h6-library.herokuapp.com/api/v1/users/${user._id}/bookings/${booking._id}`
     await axios.delete(url)
-    console.log(user)
-    await dispatch(getUser(user._id))
-    await makeBookAvailable(booking.book._id)
+    dispatch(getUser(user._id))
+    dispatch(makeBookAvailable(booking.book._id))
     const bookingId = booking._id
     setBookings(bookings?.filter((booking) => booking._id !== bookingId))
     return navigate(`/dashboard/${user._id}`)
