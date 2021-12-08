@@ -22,7 +22,7 @@ async function createMovie(override?: Partial<MovieDocument>) {
 
   return await request(app).post('/api/v1/movies').send(movie)
 }
-
+// @ts-ignore
 describe('movie controller', () => {
   let mongodHelper: MongodHelper
 

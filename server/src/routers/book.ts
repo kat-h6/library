@@ -17,12 +17,8 @@ const router = express.Router()
 router.get('/', findAll)
 router.get('/:bookId', findById)
 router.patch('/:bookId', updateBook)
-router.delete(
-  '/:bookId',
-  passport.authenticate('jwt', { session: false }),
-  deleteBook
-)
-router.post('/', passport.authenticate('jwt', { session: false }), createBook)
+router.delete('/:bookId', deleteBook)
+router.post('/', createBook)
 router.get('/search', filterBooks)
 router.patch('/:bookId/ratings', addRating)
 
