@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from '../../../types/types'
+import Swal from 'sweetalert2'
 
 import { User } from '../../../types/user'
 import { loanRequest, makeBookUnavailable } from '../../../redux/actions/user'
@@ -20,12 +21,14 @@ export default function BookingButton() {
     bookId: string | undefined
   ) => {
     if (!user) {
-      alert('Must be logged in')
+      Swal.fire('Must be logged in')
     }
     if (user && bookId) {
       dispatch(loanRequest(user, bookId))
       dispatch(makeBookUnavailable(bookId))
-      navigate(`/dashboard/${user._id}`)
+      Swal.fire('Hurray! Reservation successful').then(function () {
+        navigate(`/dashboard/${user._id}`)
+      })
     }
   }
 
