@@ -2,7 +2,7 @@ import mongoose, { Document } from 'mongoose'
 
 export type Authors = {
   name: string
-  author: string
+  author?: string
 }
 
 export type Rating = {
@@ -23,7 +23,7 @@ export type BookDocument = Document & {
   genres: string[]
   isAvailable: boolean
   imageUrl: string
-  ratings: Rating[]
+  ratings?: Rating[]
 }
 
 const bookSchema = new mongoose.Schema({
