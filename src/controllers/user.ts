@@ -1,15 +1,15 @@
+import { JWT_SECRET } from './../util/secrets'
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
 
-import User from '../models/User'
-import UserService from '../services/user'
 import {
   NotFoundError,
   BadRequestError,
   InternalServerError,
 } from '../helpers/apiError'
-import { JWT_SECRET } from '../util/secrets'
-import bcrypt from 'bcrypt'
+import User from '../models/User'
+import UserService from '../services/user'
 
 // POST /users
 export const signUp = async (
@@ -37,7 +37,8 @@ export const signUp = async (
     })
 
     await UserService.create(user)
-    res.json(user)
+    const token = await jwt.sign({ email }, JWT_SECRET)
+    res.status(200).json({ token, user: user })
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -58,40 +59,19 @@ export const signIn = async (
   }
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      res.json(user)
+      const token = jwt.sign(
+        {
+          email: user.email,
+        },
+        JWT_SECRET,
+        { expiresIn: '1h' }
+      )
+      res.json({ token, user })
     }
   } catch (error) {
     next(error)
   }
 }
-
-// export const createUser = async (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction
-// ) => {
-//   try {
-//     const { firstName, lastName, email, password, isAdmin, bookings } = req.body
-
-//     const user = new User({
-//       firstName,
-//       lastName,
-//       email,
-//       password,
-//       isAdmin,
-//       bookings,
-//     })
-
-//     await UserService.create(user)
-//     res.json(user)
-//   } catch (error) {
-//     if (error instanceof Error && error.name == 'ValidationError') {
-//       next(new BadRequestError('Invalid Request', error))
-//     } else {
-//       next(error)
-//     }
-//   }
-// }
 
 // PUT /users/userId
 export const updateUser = async (
