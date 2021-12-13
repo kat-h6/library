@@ -50,9 +50,19 @@ content-type: application/json
 {
   "firstName": "Kathy",
   "lastName": "H",
-  "email": "kathy123@gmail.com",
+  "email": "kathy1234@gmail.com",
   "password": "kathy123",
   "isAdmin": "true"
+}
+
+###
+
+POST http://localhost:5000/api/v1/users/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "kathy1234@gmail.com",
+  "password": "kathy123"
 }
 
 ####

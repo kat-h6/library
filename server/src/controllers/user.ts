@@ -9,21 +9,29 @@ import {
   InternalServerError,
 } from '../helpers/apiError'
 import { JWT_SECRET } from '../util/secrets'
+import bcrypt from 'bcrypt'
 
 // POST /users
-export const createUser = async (
+export const signUp = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const { firstName, lastName, email, password, isAdmin, bookings } = req.body
+    const existingUser = await User.findOne({ email: email })
+
+    if (existingUser) {
+      res.status(403).json({ message: 'Email is already in use' })
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10)
 
     const user = new User({
       firstName,
       lastName,
       email,
-      password,
+      password: hashedPassword,
       isAdmin,
       bookings,
     })
@@ -38,6 +46,52 @@ export const createUser = async (
     }
   }
 }
+
+export const signIn = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const user = await UserService.findUserByEmail(req.body.email)
+  if (!user) {
+    return res.status(400).send('Can\'t find user')
+  }
+  try {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      res.json(user)
+    }
+  } catch (error) {
+    next(error)
+  }
+}
+
+// export const createUser = async (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ) => {
+//   try {
+//     const { firstName, lastName, email, password, isAdmin, bookings } = req.body
+
+//     const user = new User({
+//       firstName,
+//       lastName,
+//       email,
+//       password,
+//       isAdmin,
+//       bookings,
+//     })
+
+//     await UserService.create(user)
+//     res.json(user)
+//   } catch (error) {
+//     if (error instanceof Error && error.name == 'ValidationError') {
+//       next(new BadRequestError('Invalid Request', error))
+//     } else {
+//       next(error)
+//     }
+//   }
+// }
 
 // PUT /users/userId
 export const updateUser = async (
