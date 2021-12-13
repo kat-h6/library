@@ -10,7 +10,7 @@ import jwt from 'jsonwebtoken'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const GoogleTokenStrategy = require('passport-google-id-token')
 
-import userService from '../services/user'
+import UserService from '../services/user'
 import { JWT_SECRET } from '../util/secrets'
 
 export const googleStrategy = new GoogleTokenStrategy(
@@ -24,7 +24,7 @@ export const googleStrategy = new GoogleTokenStrategy(
       lastName: parsedToken?.payload?.family_name,
     }
     try {
-      const user = await userService.findOrCreate(userPayload)
+      const user = await UserService.findOrCreate(userPayload)
       done(null, user)
     } catch (e) {
       done(e)
@@ -39,7 +39,7 @@ export const jwtStrategy = new JwtStrategy(
   },
   async (payload: any, done: any) => {
     const userEmail = payload.email
-    const foundUser = await userService.findUserByEmail(userEmail)
+    const foundUser = await UserService.findUserByEmail(userEmail)
     done(null, foundUser)
   }
 )

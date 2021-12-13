@@ -50,9 +50,9 @@ content-type: application/json
 {
   "firstName": "Kathy",
   "lastName": "H",
-  "email": "kathy1234@gmail.com",
+  "email": "test1234567@gmail.com",
   "password": "kathy123",
-  "isAdmin": "true"
+  "isAdmin": "false"
 }
 
 ###
