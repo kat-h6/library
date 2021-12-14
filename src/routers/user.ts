@@ -33,6 +33,10 @@ router.post(
   authenticate
 )
 router.patch('/:userId/bookings', createBooking)
-router.delete('/:userId/bookings/:bookingId', deleteBooking)
+router.delete(
+  '/:userId/bookings/:bookingId',
+  passport.authenticate('jwt', { session: false }),
+  deleteBooking
+)
 
 export default router
