@@ -20,6 +20,10 @@ router.patch('/:bookId', updateBook)
 router.delete('/:bookId', deleteBook)
 router.post('/', createBook)
 router.get('/search', filterBooks)
-router.patch('/:bookId/ratings', addRating)
+router.patch(
+  '/:bookId/ratings',
+  passport.authenticate('jwt', { session: false }),
+  addRating
+)
 
 export default router

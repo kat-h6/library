@@ -23,7 +23,11 @@ router.put(
   passport.authenticate('jwt', { session: false }),
   updateUser
 )
-router.delete('/:userId', deleteUser)
+router.delete(
+  '/:userId',
+  passport.authenticate('jwt', { session: false }),
+  deleteUser
+)
 // router.post('/', createUser)
 router.post('/', signUp)
 router.post('/login', signIn)
@@ -32,7 +36,11 @@ router.post(
   passport.authenticate('google-id-token', { session: false }),
   authenticate
 )
-router.patch('/:userId/bookings', createBooking)
+router.patch(
+  '/:userId/bookings',
+  passport.authenticate('jwt', { session: false }),
+  createBooking
+)
 router.delete(
   '/:userId/bookings/:bookingId',
   passport.authenticate('jwt', { session: false }),
