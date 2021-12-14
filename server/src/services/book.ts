@@ -77,7 +77,7 @@ const addRating = async (ratingDetails: Rating, bookId: string) => {
     throw new NotFoundError(`Book ${bookId} not found`)
   }
 
-  foundBook.ratings.push(ratingDetails)
+  foundBook?.ratings?.push(ratingDetails)
 
   return foundBook.save()
 }
