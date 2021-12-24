@@ -25,7 +25,11 @@ app.use(compression())
 app.use(express.json())
 app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
-app.use(cors())
+app.use(
+  cors({
+    origin: '*',
+  })
+)
 passport.use(googleStrategy)
 passport.use(jwtStrategy)
 

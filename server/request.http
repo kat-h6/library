@@ -84,7 +84,7 @@ GET http://localhost:3000/api/v1/bookings/618e7642fad48c5a69c4c956 HTTP/1.1
 ###
 
 PATCH http://localhost:5000/api/v1/users/61a49c021e69081033f1a351/bookings HTTP/1.1
-content-type: application/json 
+content-type: application/json
 
 {
   "book": "61a223399c58b9aebe7120ff",
@@ -112,7 +112,7 @@ DELETE http://localhost:5000/api/v1/users/61a49c021e69081033f1a351/bookings/61a4
 DELETE http://localhost:5000/api/v1/users/61a49c021e69081033f1a351/bookings/61a4e6d7257adc23ad6e70d4 HTTP/1.1
 
 ###
-DELETE https://kat-h6-library.herokuapp.com/api/v1/users/61a49c021e69081033f1a351/bookings/61ae577fa5feaa0022b654c0
+DELETE https://kat-h6-library.herokuapp.com/api/v1/users/61a49c021e69081033f1a351/bookings/61c5f578c22ff36d6c6e5a6d
 
 ###
 PATCH https://kat-h6-library.herokuapp.com/api/v1/users/61a49c021e69081033f1a351
