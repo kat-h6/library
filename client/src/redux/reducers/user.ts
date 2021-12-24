@@ -1,9 +1,16 @@
-import { UserState, UserActions, LOG_IN, LOG_OUT } from '../../types/user'
+import {
+  UserState,
+  UserActions,
+  LOG_IN,
+  LOG_OUT,
+  SET_TOKEN,
+} from '../../types/user'
 
 //prettier-ignore
 export default function user(
   state: UserState = {
     user: null,
+    token: null
   },
   action: UserActions
 ): UserState {
@@ -11,8 +18,11 @@ export default function user(
   case LOG_IN: {
     return { ...state, user: action.payload.user }
   }
+  case SET_TOKEN: {
+    return { ...state, token: action.payload.token}
+  }
   case LOG_OUT: {
-    return {...state, user: null}
+    return {...state, user: null, token: null}
   }
   default:
     return state

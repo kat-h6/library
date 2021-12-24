@@ -13,18 +13,20 @@ export default function BookingButton() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const user = useSelector((state: AppState) => state.user.user)
+  const token = useSelector((state: AppState) => state.user.token)
   const { bookId } = useParams()
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const makeBookingRequest = (
     user: User | null,
-    bookId: string | undefined
+    bookId: string | undefined,
+    token: string | null
   ) => {
-    if (!user) {
+    if (!user || !token) {
       Swal.fire('Must be logged in')
     }
-    if (user && bookId) {
-      dispatch(loanRequest(user, bookId))
+    if (user && bookId && token) {
+      dispatch(loanRequest(user, bookId, token))
       dispatch(makeBookUnavailable(bookId))
       Swal.fire('Hurray! Reservation successful').then(function () {
         navigate(`/dashboard/${user._id}`)
@@ -35,7 +37,7 @@ export default function BookingButton() {
   return (
     <div>
       <Button
-        onClick={() => makeBookingRequest(user, bookId)}
+        onClick={() => makeBookingRequest(user, bookId, token)}
         variant="warning"
         className="booking-btn"
       >

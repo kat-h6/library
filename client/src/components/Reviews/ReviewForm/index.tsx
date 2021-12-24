@@ -2,15 +2,17 @@ import React from 'react'
 import { useFormik } from 'formik'
 import { Form, Button } from 'react-bootstrap'
 import { useParams } from 'react-router'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 // import * as yup from 'yup'
 
 import './ReviewForm.scss'
 import { submitReview } from '../../../redux/actions/book'
+import { AppState } from '../../../types/types'
 
 export default function ReviewForm() {
   const { bookId } = useParams()
   const dispatch = useDispatch()
+  const token = useSelector((state: AppState) => state.user.token)
 
   const validate = (values: any) => {
     const errors: any = {}
@@ -43,7 +45,9 @@ export default function ReviewForm() {
     },
     validate,
     onSubmit: (values) => {
-      dispatch(submitReview(values, bookId))
+      if (token) {
+        dispatch(submitReview(values, bookId, token))
+      }
     },
   })
 

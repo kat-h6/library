@@ -67,7 +67,11 @@ export function getBook(bookId: string | undefined) {
   }
 }
 
-export function submitReview(values: any, bookId: string | undefined) {
+export function submitReview(
+  values: any,
+  bookId: string | undefined,
+  token: string
+) {
   return (dispatch: Dispatch<any>) => {
     const date = new Date()
     const review = {
@@ -77,10 +81,17 @@ export function submitReview(values: any, bookId: string | undefined) {
       rating: values.rating,
       date: date,
     }
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    console.log(config)
     return axios
       .patch(
         `https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}/ratings`,
-        review
+        review,
+        config
       )
       .then((data) => dispatch(getBook(data.data._id)))
   }
@@ -93,16 +104,6 @@ export function makeBookAvailable(bookId: string) {
       `https://kat-h6-library.herokuapp.com/api/v1/books/${bookId}`,
       availability
     )
-  }
-}
-
-export function deleteBooking(
-  bookingId: string | undefined,
-  userId: string | undefined
-) {
-  return (dispatch: Dispatch<any>) => {
-    const url = `https://kat-h6-library.herokuapp.com/api/v1/users/${userId}/bookings/${bookingId}`
-    return axios.delete(url)
   }
 }
 

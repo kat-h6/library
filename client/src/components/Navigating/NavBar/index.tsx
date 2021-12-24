@@ -9,7 +9,7 @@ import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-import { getUser, logOut } from '../../../redux/actions/user'
+import { getUser, logOut, setToken } from '../../../redux/actions/user'
 import { AppState } from '../../../types/types'
 import Search from '../../Search/SearchBar/index'
 import './NavBar.scss'
@@ -24,6 +24,7 @@ export default function NavBar() {
       { id_token: response.tokenObj.id_token }
     )
     dispatch(getUser(res.data.id))
+    dispatch(setToken(res.data.token))
   }
 
   let button
